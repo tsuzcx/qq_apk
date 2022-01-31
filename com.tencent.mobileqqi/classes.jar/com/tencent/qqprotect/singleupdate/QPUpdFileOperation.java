@@ -46,7 +46,7 @@ public class QPUpdFileOperation
           break;
         }
         Object localObject2 = ((ZipEntry)localObject1).getName();
-        if ((localObject2 == null) || (((String)localObject2).contains(".."))) {
+        if ((localObject2 == null) || (((String)localObject2).contains("../"))) {
           continue;
         }
         localObject2 = new byte[2048];

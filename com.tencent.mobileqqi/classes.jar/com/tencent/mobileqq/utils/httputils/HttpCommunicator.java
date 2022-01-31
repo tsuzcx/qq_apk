@@ -642,7 +642,7 @@ public class HttpCommunicator
     //   125: invokevirtual 268	com/tencent/mobileqq/utils/httputils/HttpMsg:d	()Ljava/lang/String;
     //   128: ldc_w 266
     //   131: invokevirtual 227	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   134: ifeq +4571 -> 4705
+    //   134: ifeq +4563 -> 4697
     //   137: new 665	his
     //   140: dup
     //   141: aload_0
@@ -738,11 +738,11 @@ public class HttpCommunicator
     //   326: iload 4
     //   328: istore 5
     //   330: lload 14
-    //   332: lstore 18
+    //   332: lstore 16
     //   334: iload 4
     //   336: istore 6
     //   338: lload 14
-    //   340: lstore 16
+    //   340: lstore 18
     //   342: aload 32
     //   344: astore 29
     //   346: aload_0
@@ -752,11 +752,11 @@ public class HttpCommunicator
     //   352: iload 4
     //   354: istore 5
     //   356: lload 14
-    //   358: lstore 18
+    //   358: lstore 16
     //   360: iload 4
     //   362: istore 6
     //   364: lload 14
-    //   366: lstore 16
+    //   366: lstore 18
     //   368: aload 32
     //   370: astore 29
     //   372: aload 25
@@ -765,11 +765,11 @@ public class HttpCommunicator
     //   379: iload 4
     //   381: istore 5
     //   383: lload 14
-    //   385: lstore 18
+    //   385: lstore 16
     //   387: iload 4
     //   389: istore 6
     //   391: lload 14
-    //   393: lstore 16
+    //   393: lstore 18
     //   395: aload 32
     //   397: astore 29
     //   399: aload_0
@@ -782,11 +782,11 @@ public class HttpCommunicator
     //   412: iload 4
     //   414: istore 5
     //   416: lload 14
-    //   418: lstore 18
+    //   418: lstore 16
     //   420: iload 4
     //   422: istore 6
     //   424: lload 14
-    //   426: lstore 16
+    //   426: lstore 18
     //   428: aload 32
     //   430: astore 29
     //   432: aload_2
@@ -897,11 +897,11 @@ public class HttpCommunicator
     //   661: iload 4
     //   663: istore 5
     //   665: lload 14
-    //   667: lstore 18
+    //   667: lstore 16
     //   669: iload 4
     //   671: istore 6
     //   673: lload 14
-    //   675: lstore 16
+    //   675: lstore 18
     //   677: aload 32
     //   679: astore 29
     //   681: aload_0
@@ -912,11 +912,11 @@ public class HttpCommunicator
     //   693: iload 4
     //   695: istore 5
     //   697: lload 14
-    //   699: lstore 18
+    //   699: lstore 16
     //   701: iload 4
     //   703: istore 6
     //   705: lload 14
-    //   707: lstore 16
+    //   707: lstore 18
     //   709: aload 32
     //   711: astore 29
     //   713: aload_0
@@ -926,11 +926,11 @@ public class HttpCommunicator
     //   722: iload 4
     //   724: istore 5
     //   726: lload 14
-    //   728: lstore 18
+    //   728: lstore 16
     //   730: iload 4
     //   732: istore 6
     //   734: lload 14
-    //   736: lstore 16
+    //   736: lstore 18
     //   738: aload 32
     //   740: astore 29
     //   742: aload_0
@@ -957,11 +957,11 @@ public class HttpCommunicator
     //   793: iload 4
     //   795: istore 5
     //   797: lload 14
-    //   799: lstore 18
+    //   799: lstore 16
     //   801: iload 4
     //   803: istore 6
     //   805: lload 14
-    //   807: lstore 16
+    //   807: lstore 18
     //   809: aload 32
     //   811: astore 29
     //   813: aload_0
@@ -985,11 +985,11 @@ public class HttpCommunicator
     //   857: iload 4
     //   859: istore 5
     //   861: lload 14
-    //   863: lstore 18
+    //   863: lstore 16
     //   865: iload 4
     //   867: istore 6
     //   869: lload 14
-    //   871: lstore 16
+    //   871: lstore 18
     //   873: aload 32
     //   875: astore 29
     //   877: aload 25
@@ -1003,7 +1003,7 @@ public class HttpCommunicator
     //   897: iload 4
     //   899: istore 6
     //   901: lload 14
-    //   903: lstore 16
+    //   903: lstore 18
     //   905: aload 32
     //   907: astore 29
     //   909: aload 27
@@ -1011,7 +1011,7 @@ public class HttpCommunicator
     //   914: iload 4
     //   916: istore 6
     //   918: lload 14
-    //   920: lstore 16
+    //   920: lstore 18
     //   922: aload 32
     //   924: astore 29
     //   926: aload 25
@@ -1019,11 +1019,11 @@ public class HttpCommunicator
     //   931: iload 4
     //   933: istore 5
     //   935: lload 14
-    //   937: lstore 18
+    //   937: lstore 16
     //   939: iload 4
     //   941: istore 6
     //   943: lload 14
-    //   945: lstore 16
+    //   945: lstore 18
     //   947: aload 32
     //   949: astore 29
     //   951: aload_1
@@ -1032,11 +1032,11 @@ public class HttpCommunicator
     //   958: iload 4
     //   960: istore 5
     //   962: lload 14
-    //   964: lstore 18
+    //   964: lstore 16
     //   966: iload 4
     //   968: istore 6
     //   970: lload 14
-    //   972: lstore 16
+    //   972: lstore 18
     //   974: aload 32
     //   976: astore 29
     //   978: aload 35
@@ -1144,11 +1144,11 @@ public class HttpCommunicator
     //   1202: iload 4
     //   1204: istore 5
     //   1206: lload 14
-    //   1208: lstore 18
+    //   1208: lstore 16
     //   1210: iload 4
     //   1212: istore 6
     //   1214: lload 14
-    //   1216: lstore 16
+    //   1216: lstore 18
     //   1218: aload 32
     //   1220: astore 29
     //   1222: aload_1
@@ -1159,11 +1159,11 @@ public class HttpCommunicator
     //   1233: iload 4
     //   1235: istore 5
     //   1237: lload 14
-    //   1239: lstore 18
+    //   1239: lstore 16
     //   1241: iload 4
     //   1243: istore 6
     //   1245: lload 14
-    //   1247: lstore 16
+    //   1247: lstore 18
     //   1249: aload 32
     //   1251: astore 29
     //   1253: aload_1
@@ -1172,11 +1172,11 @@ public class HttpCommunicator
     //   1259: iload 4
     //   1261: istore 5
     //   1263: lload 14
-    //   1265: lstore 18
+    //   1265: lstore 16
     //   1267: iload 4
     //   1269: istore 6
     //   1271: lload 14
-    //   1273: lstore 16
+    //   1273: lstore 18
     //   1275: aload 32
     //   1277: astore 29
     //   1279: aload_1
@@ -1196,11 +1196,11 @@ public class HttpCommunicator
     //   1306: iload 4
     //   1308: istore 5
     //   1310: lload 14
-    //   1312: lstore 18
+    //   1312: lstore 16
     //   1314: iload 4
     //   1316: istore 6
     //   1318: lload 14
-    //   1320: lstore 16
+    //   1320: lstore 18
     //   1322: aload 32
     //   1324: astore 29
     //   1326: new 471	java/io/IOException
@@ -1217,14 +1217,14 @@ public class HttpCommunicator
     //   1346: astore 28
     //   1348: aconst_null
     //   1349: astore 26
-    //   1351: iconst_0
-    //   1352: istore 6
-    //   1354: iload 5
-    //   1356: istore 4
-    //   1358: lload 12
-    //   1360: lstore 14
-    //   1362: lload 18
-    //   1364: lstore 12
+    //   1351: lload 12
+    //   1353: lstore 14
+    //   1355: lload 16
+    //   1357: lstore 12
+    //   1359: iconst_0
+    //   1360: istore 6
+    //   1362: iload 5
+    //   1364: istore 4
     //   1366: iload 6
     //   1368: istore 5
     //   1370: aload 24
@@ -1383,11 +1383,11 @@ public class HttpCommunicator
     //   1713: iload 4
     //   1715: istore 5
     //   1717: lload 14
-    //   1719: lstore 18
+    //   1719: lstore 16
     //   1721: iload 4
     //   1723: istore 6
     //   1725: lload 14
-    //   1727: lstore 16
+    //   1727: lstore 18
     //   1729: aload 32
     //   1731: astore 29
     //   1733: new 137	java/lang/Exception
@@ -1402,7 +1402,7 @@ public class HttpCommunicator
     //   1751: astore 28
     //   1753: aload 31
     //   1755: astore 29
-    //   1757: lload 16
+    //   1757: lload 18
     //   1759: lstore 14
     //   1761: iload 6
     //   1763: istore 5
@@ -1532,11 +1532,11 @@ public class HttpCommunicator
     //   2047: iload 4
     //   2049: istore 5
     //   2051: lload 14
-    //   2053: lstore 18
+    //   2053: lstore 16
     //   2055: iload 4
     //   2057: istore 6
     //   2059: lload 14
-    //   2061: lstore 16
+    //   2061: lstore 18
     //   2063: aload 32
     //   2065: astore 29
     //   2067: aload_0
@@ -1554,11 +1554,11 @@ public class HttpCommunicator
     //   2091: iload 4
     //   2093: istore 5
     //   2095: lload 14
-    //   2097: lstore 18
+    //   2097: lstore 16
     //   2099: iload 4
     //   2101: istore 6
     //   2103: lload 14
-    //   2105: lstore 16
+    //   2105: lstore 18
     //   2107: aload 32
     //   2109: astore 29
     //   2111: aload 25
@@ -1573,11 +1573,11 @@ public class HttpCommunicator
     //   2132: iload 4
     //   2134: istore 5
     //   2136: lload 14
-    //   2138: lstore 18
+    //   2138: lstore 16
     //   2140: iload 4
     //   2142: istore 6
     //   2144: lload 14
-    //   2146: lstore 16
+    //   2146: lstore 18
     //   2148: aload 32
     //   2150: astore 29
     //   2152: aload_1
@@ -1586,11 +1586,11 @@ public class HttpCommunicator
     //   2159: iload 4
     //   2161: istore 5
     //   2163: lload 14
-    //   2165: lstore 18
+    //   2165: lstore 16
     //   2167: iload 4
     //   2169: istore 6
     //   2171: lload 14
-    //   2173: lstore 16
+    //   2173: lstore 18
     //   2175: aload 32
     //   2177: astore 29
     //   2179: aload 26
@@ -1601,11 +1601,11 @@ public class HttpCommunicator
     //   2191: iload 4
     //   2193: istore 5
     //   2195: lload 14
-    //   2197: lstore 18
+    //   2197: lstore 16
     //   2199: iload 4
     //   2201: istore 6
     //   2203: lload 14
-    //   2205: lstore 16
+    //   2205: lstore 18
     //   2207: aload 32
     //   2209: astore 29
     //   2211: aload 26
@@ -1616,11 +1616,11 @@ public class HttpCommunicator
     //   2223: iload 4
     //   2225: istore 5
     //   2227: lload 14
-    //   2229: lstore 18
+    //   2229: lstore 16
     //   2231: iload 4
     //   2233: istore 6
     //   2235: lload 14
-    //   2237: lstore 16
+    //   2237: lstore 18
     //   2239: aload 32
     //   2241: astore 29
     //   2243: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1628,11 +1628,11 @@ public class HttpCommunicator
     //   2249: iload 4
     //   2251: istore 5
     //   2253: lload 14
-    //   2255: lstore 18
+    //   2255: lstore 16
     //   2257: iload 4
     //   2259: istore 6
     //   2261: lload 14
-    //   2263: lstore 16
+    //   2263: lstore 18
     //   2265: aload 32
     //   2267: astore 29
     //   2269: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1640,11 +1640,11 @@ public class HttpCommunicator
     //   2275: iload 4
     //   2277: istore 5
     //   2279: lload 14
-    //   2281: lstore 18
+    //   2281: lstore 16
     //   2283: iload 4
     //   2285: istore 6
     //   2287: lload 14
-    //   2289: lstore 16
+    //   2289: lstore 18
     //   2291: aload 32
     //   2293: astore 29
     //   2295: ldc 19
@@ -1654,11 +1654,11 @@ public class HttpCommunicator
     //   2304: iload 4
     //   2306: istore 5
     //   2308: lload 14
-    //   2310: lstore 18
+    //   2310: lstore 16
     //   2312: iload 4
     //   2314: istore 6
     //   2316: lload 14
-    //   2318: lstore 16
+    //   2318: lstore 18
     //   2320: aload 32
     //   2322: astore 29
     //   2324: aload_0
@@ -1729,7 +1729,7 @@ public class HttpCommunicator
     //   2468: invokevirtual 268	com/tencent/mobileqq/utils/httputils/HttpMsg:d	()Ljava/lang/String;
     //   2471: ldc_w 266
     //   2474: invokevirtual 227	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2477: ifeq +2239 -> 4716
+    //   2477: ifeq +2231 -> 4708
     //   2480: iconst_1
     //   2481: istore_3
     //   2482: aload_0
@@ -1765,11 +1765,11 @@ public class HttpCommunicator
     //   2541: iload 4
     //   2543: istore 5
     //   2545: lload 14
-    //   2547: lstore 18
+    //   2547: lstore 16
     //   2549: iload 4
     //   2551: istore 6
     //   2553: lload 14
-    //   2555: lstore 16
+    //   2555: lstore 18
     //   2557: aload 32
     //   2559: astore 29
     //   2561: aload 26
@@ -1779,11 +1779,11 @@ public class HttpCommunicator
     //   2571: iload 4
     //   2573: istore 5
     //   2575: lload 14
-    //   2577: lstore 18
+    //   2577: lstore 16
     //   2579: iload 4
     //   2581: istore 6
     //   2583: lload 14
-    //   2585: lstore 16
+    //   2585: lstore 18
     //   2587: aload 32
     //   2589: astore 29
     //   2591: aload_1
@@ -1794,11 +1794,11 @@ public class HttpCommunicator
     //   2600: iload 4
     //   2602: istore 5
     //   2604: lload 14
-    //   2606: lstore 18
+    //   2606: lstore 16
     //   2608: iload 4
     //   2610: istore 6
     //   2612: lload 14
-    //   2614: lstore 16
+    //   2614: lstore 18
     //   2616: aload 32
     //   2618: astore 29
     //   2620: aload_1
@@ -1809,11 +1809,11 @@ public class HttpCommunicator
     //   2633: iload 4
     //   2635: istore 5
     //   2637: lload 14
-    //   2639: lstore 18
+    //   2639: lstore 16
     //   2641: iload 4
     //   2643: istore 6
     //   2645: lload 14
-    //   2647: lstore 16
+    //   2647: lstore 18
     //   2649: aload 32
     //   2651: astore 29
     //   2653: new 471	java/io/IOException
@@ -1824,11 +1824,11 @@ public class HttpCommunicator
     //   2663: iload 4
     //   2665: istore 5
     //   2667: lload 14
-    //   2669: lstore 18
+    //   2669: lstore 16
     //   2671: iload 4
     //   2673: istore 6
     //   2675: lload 14
-    //   2677: lstore 16
+    //   2677: lstore 18
     //   2679: aload 32
     //   2681: astore 29
     //   2683: aload_0
@@ -1847,11 +1847,11 @@ public class HttpCommunicator
     //   2714: iload 4
     //   2716: istore 5
     //   2718: lload 14
-    //   2720: lstore 18
+    //   2720: lstore 16
     //   2722: iload 4
     //   2724: istore 6
     //   2726: lload 14
-    //   2728: lstore 16
+    //   2728: lstore 18
     //   2730: aload 32
     //   2732: astore 29
     //   2734: aload_1
@@ -1862,11 +1862,11 @@ public class HttpCommunicator
     //   2743: iload 4
     //   2745: istore 5
     //   2747: lload 14
-    //   2749: lstore 18
+    //   2749: lstore 16
     //   2751: iload 4
     //   2753: istore 6
     //   2755: lload 14
-    //   2757: lstore 16
+    //   2757: lstore 18
     //   2759: aload 32
     //   2761: astore 29
     //   2763: aload_1
@@ -1878,11 +1878,11 @@ public class HttpCommunicator
     //   2775: iload 4
     //   2777: istore 5
     //   2779: lload 14
-    //   2781: lstore 18
+    //   2781: lstore 16
     //   2783: iload 4
     //   2785: istore 6
     //   2787: lload 14
-    //   2789: lstore 16
+    //   2789: lstore 18
     //   2791: aload 32
     //   2793: astore 29
     //   2795: aload 35
@@ -1890,7 +1890,7 @@ public class HttpCommunicator
     //   2798: aload_1
     //   2799: iconst_3
     //   2800: invokeinterface 407 4 0
-    //   2805: ifeq +1888 -> 4693
+    //   2805: ifeq +1880 -> 4685
     //   2808: lconst_0
     //   2809: ldc2_w 710
     //   2812: ladd
@@ -1898,11 +1898,11 @@ public class HttpCommunicator
     //   2815: iload 4
     //   2817: istore 5
     //   2819: lload 14
-    //   2821: lstore 18
+    //   2821: lstore 16
     //   2823: iload 4
     //   2825: istore 6
     //   2827: lload 14
-    //   2829: lstore 16
+    //   2829: lstore 18
     //   2831: aload 32
     //   2833: astore 29
     //   2835: aload 25
@@ -1911,7 +1911,7 @@ public class HttpCommunicator
     //   2842: iload 4
     //   2844: istore 6
     //   2846: lload 14
-    //   2848: lstore 16
+    //   2848: lstore 18
     //   2850: aload 28
     //   2852: astore 29
     //   2854: new 778	java/io/ByteArrayOutputStream
@@ -1930,9 +1930,9 @@ public class HttpCommunicator
     //   2880: lload 14
     //   2882: lstore 16
     //   2884: iload 5
-    //   2886: istore 9
+    //   2886: istore 7
     //   2888: lload 14
-    //   2890: lstore 20
+    //   2890: lstore 18
     //   2892: aload 28
     //   2894: aload 30
     //   2896: iload 6
@@ -1941,109 +1941,109 @@ public class HttpCommunicator
     //   2901: iload 6
     //   2903: isub
     //   2904: invokevirtual 819	java/io/InputStream:read	([BII)I
-    //   2907: istore 7
-    //   2909: iload 7
+    //   2907: istore 9
+    //   2909: iload 9
     //   2911: ifle +204 -> 3115
     //   2914: iload 5
     //   2916: istore 8
     //   2918: lload 14
     //   2920: lstore 16
     //   2922: iload 5
-    //   2924: istore 9
+    //   2924: istore 7
     //   2926: lload 14
-    //   2928: lstore 20
+    //   2928: lstore 18
     //   2930: aload_0
     //   2931: aload_2
     //   2932: aload_1
     //   2933: invokevirtual 646	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lhiu;Lcom/tencent/mobileqq/utils/httputils/HttpMsg;)V
     //   2936: lload 14
-    //   2938: iload 7
+    //   2938: iload 9
     //   2940: i2l
     //   2941: ladd
-    //   2942: lstore 18
+    //   2942: lstore 20
     //   2944: iload 6
-    //   2946: iload 7
+    //   2946: iload 9
     //   2948: iadd
     //   2949: istore 11
     //   2951: iload 5
-    //   2953: iload 7
+    //   2953: iload 9
     //   2955: iadd
-    //   2956: istore 7
-    //   2958: iload 7
+    //   2956: istore 9
+    //   2958: iload 9
     //   2960: istore 5
     //   2962: iload 11
     //   2964: istore 6
-    //   2966: lload 18
+    //   2966: lload 20
     //   2968: lstore 14
-    //   2970: iload 7
+    //   2970: iload 9
     //   2972: istore 8
-    //   2974: lload 18
+    //   2974: lload 20
     //   2976: lstore 16
-    //   2978: iload 7
-    //   2980: istore 9
-    //   2982: lload 18
-    //   2984: lstore 20
+    //   2978: iload 9
+    //   2980: istore 7
+    //   2982: lload 20
+    //   2984: lstore 18
     //   2986: iload 11
     //   2988: aload 30
     //   2990: arraylength
     //   2991: if_icmplt -115 -> 2876
-    //   2994: iload 7
+    //   2994: iload 9
     //   2996: istore 8
-    //   2998: lload 18
+    //   2998: lload 20
     //   3000: lstore 16
-    //   3002: iload 7
-    //   3004: istore 9
-    //   3006: lload 18
-    //   3008: lstore 20
+    //   3002: iload 9
+    //   3004: istore 7
+    //   3006: lload 20
+    //   3008: lstore 18
     //   3010: aload_1
     //   3011: invokevirtual 821	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()Z
     //   3014: ifeq +64 -> 3078
-    //   3017: iload 7
+    //   3017: iload 9
     //   3019: istore 8
-    //   3021: lload 18
+    //   3021: lload 20
     //   3023: lstore 16
-    //   3025: iload 7
-    //   3027: istore 9
-    //   3029: lload 18
-    //   3031: lstore 20
+    //   3025: iload 9
+    //   3027: istore 7
+    //   3029: lload 20
+    //   3031: lstore 18
     //   3033: aload_1
     //   3034: aload 30
     //   3036: invokevirtual 824	com/tencent/mobileqq/utils/httputils/HttpMsg:a	([B)V
-    //   3039: iload 7
+    //   3039: iload 9
     //   3041: istore 8
-    //   3043: lload 18
+    //   3043: lload 20
     //   3045: lstore 16
-    //   3047: iload 7
-    //   3049: istore 9
-    //   3051: lload 18
-    //   3053: lstore 20
+    //   3047: iload 9
+    //   3049: istore 7
+    //   3051: lload 20
+    //   3053: lstore 18
     //   3055: aload 35
     //   3057: aload_1
     //   3058: aload_1
     //   3059: invokeinterface 826 3 0
     //   3064: iconst_0
     //   3065: istore 6
-    //   3067: iload 7
+    //   3067: iload 9
     //   3069: istore 5
-    //   3071: lload 18
+    //   3071: lload 20
     //   3073: lstore 14
     //   3075: goto -199 -> 2876
-    //   3078: iload 7
+    //   3078: iload 9
     //   3080: istore 8
-    //   3082: lload 18
+    //   3082: lload 20
     //   3084: lstore 16
-    //   3086: iload 7
-    //   3088: istore 9
-    //   3090: lload 18
-    //   3092: lstore 20
+    //   3086: iload 9
+    //   3088: istore 7
+    //   3090: lload 20
+    //   3092: lstore 18
     //   3094: aload 26
     //   3096: aload 30
     //   3098: invokevirtual 828	java/io/ByteArrayOutputStream:write	([B)V
     //   3101: iconst_0
     //   3102: istore 6
-    //   3104: iload 7
+    //   3104: iload 9
     //   3106: istore 5
-    //   3108: lload 18
+    //   3108: lload 20
     //   3110: lstore 14
     //   3112: goto -236 -> 2876
     //   3115: iload 5
@@ -2051,9 +2051,9 @@ public class HttpCommunicator
     //   3119: lload 14
     //   3121: lstore 16
     //   3123: iload 5
-    //   3125: istore 9
+    //   3125: istore 7
     //   3127: lload 14
-    //   3129: lstore 20
+    //   3129: lstore 18
     //   3131: aload_1
     //   3132: invokevirtual 821	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()Z
     //   3135: ifeq +441 -> 3576
@@ -2064,9 +2064,9 @@ public class HttpCommunicator
     //   3147: lload 14
     //   3149: lstore 16
     //   3151: iload 5
-    //   3153: istore 9
+    //   3153: istore 7
     //   3155: lload 14
-    //   3157: lstore 20
+    //   3157: lstore 18
     //   3159: iload 6
     //   3161: newarray byte
     //   3163: astore 29
@@ -2075,9 +2075,9 @@ public class HttpCommunicator
     //   3169: lload 14
     //   3171: lstore 16
     //   3173: iload 5
-    //   3175: istore 9
+    //   3175: istore 7
     //   3177: lload 14
-    //   3179: lstore 20
+    //   3179: lstore 18
     //   3181: aload 30
     //   3183: iconst_0
     //   3184: aload 29
@@ -2089,9 +2089,9 @@ public class HttpCommunicator
     //   3196: lload 14
     //   3198: lstore 16
     //   3200: iload 5
-    //   3202: istore 9
+    //   3202: istore 7
     //   3204: lload 14
-    //   3206: lstore 20
+    //   3206: lstore 18
     //   3208: aload_1
     //   3209: aload 29
     //   3211: invokevirtual 824	com/tencent/mobileqq/utils/httputils/HttpMsg:a	([B)V
@@ -2100,9 +2100,9 @@ public class HttpCommunicator
     //   3218: lload 14
     //   3220: lstore 16
     //   3222: iload 5
-    //   3224: istore 9
+    //   3224: istore 7
     //   3226: lload 14
-    //   3228: lstore 20
+    //   3228: lstore 18
     //   3230: aload 35
     //   3232: aload_1
     //   3233: aload_1
@@ -2112,9 +2112,9 @@ public class HttpCommunicator
     //   3243: lload 14
     //   3245: lstore 16
     //   3247: iload 5
-    //   3249: istore 9
+    //   3249: istore 7
     //   3251: lload 14
-    //   3253: lstore 20
+    //   3253: lstore 18
     //   3255: aload 26
     //   3257: invokevirtual 779	java/io/ByteArrayOutputStream:close	()V
     //   3260: aload 26
@@ -2262,9 +2262,9 @@ public class HttpCommunicator
     //   3585: lload 14
     //   3587: lstore 16
     //   3589: iload 5
-    //   3591: istore 9
+    //   3591: istore 7
     //   3593: lload 14
-    //   3595: lstore 20
+    //   3595: lstore 18
     //   3597: aload 26
     //   3599: aload 30
     //   3601: iconst_0
@@ -2275,9 +2275,9 @@ public class HttpCommunicator
     //   3611: lload 14
     //   3613: lstore 16
     //   3615: iload 5
-    //   3617: istore 9
+    //   3617: istore 7
     //   3619: lload 14
-    //   3621: lstore 20
+    //   3621: lstore 18
     //   3623: aload 26
     //   3625: invokevirtual 834	java/io/ByteArrayOutputStream:flush	()V
     //   3628: iload 5
@@ -2285,9 +2285,9 @@ public class HttpCommunicator
     //   3632: lload 14
     //   3634: lstore 16
     //   3636: iload 5
-    //   3638: istore 9
+    //   3638: istore 7
     //   3640: lload 14
-    //   3642: lstore 20
+    //   3642: lstore 18
     //   3644: aload_1
     //   3645: aload 26
     //   3647: invokevirtual 837	java/io/ByteArrayOutputStream:toByteArray	()[B
@@ -2297,9 +2297,9 @@ public class HttpCommunicator
     //   3657: lload 14
     //   3659: lstore 16
     //   3661: iload 5
-    //   3663: istore 9
+    //   3663: istore 7
     //   3665: lload 14
-    //   3667: lstore 20
+    //   3667: lstore 18
     //   3669: aload 35
     //   3671: aload_1
     //   3672: aload_1
@@ -2326,7 +2326,7 @@ public class HttpCommunicator
     //   3715: iload 4
     //   3717: istore 5
     //   3719: lload 14
-    //   3721: lstore 18
+    //   3721: lstore 16
     //   3723: aload_0
     //   3724: iload 4
     //   3726: aload 25
@@ -2547,22 +2547,22 @@ public class HttpCommunicator
     //   4145: goto -2365 -> 1780
     //   4148: astore 30
     //   4150: iconst_0
-    //   4151: istore 7
+    //   4151: istore 8
     //   4153: aload 26
     //   4155: astore 29
     //   4157: aload 24
     //   4159: astore 26
     //   4161: aload 30
     //   4163: astore 24
-    //   4165: iload 9
+    //   4165: iload 7
     //   4167: istore 6
     //   4169: iload 22
     //   4171: istore_3
     //   4172: iload 4
     //   4174: istore 5
-    //   4176: iload 7
+    //   4176: iload 8
     //   4178: istore 4
-    //   4180: lload 20
+    //   4180: lload 18
     //   4182: lstore 14
     //   4184: goto -2404 -> 1780
     //   4187: astore 29
@@ -2655,7 +2655,7 @@ public class HttpCommunicator
     //   4350: goto -2972 -> 1378
     //   4353: astore 29
     //   4355: aconst_null
-    //   4356: astore 30
+    //   4356: astore 31
     //   4358: lload 12
     //   4360: lstore 14
     //   4362: lconst_0
@@ -2665,16 +2665,16 @@ public class HttpCommunicator
     //   4368: aload 25
     //   4370: astore 24
     //   4372: aconst_null
-    //   4373: astore 31
+    //   4373: astore 30
     //   4375: aload 26
     //   4377: astore 27
     //   4379: iconst_1
     //   4380: istore_3
     //   4381: aload 28
     //   4383: astore 25
-    //   4385: aload 30
+    //   4385: aload 31
     //   4387: astore 26
-    //   4389: aload 31
+    //   4389: aload 30
     //   4391: astore 28
     //   4393: goto -3015 -> 1378
     //   4396: astore 29
@@ -2701,177 +2701,173 @@ public class HttpCommunicator
     //   4433: goto -3055 -> 1378
     //   4436: astore 29
     //   4438: aconst_null
-    //   4439: astore 31
-    //   4441: aload 25
-    //   4443: astore 28
-    //   4445: aconst_null
-    //   4446: astore 30
-    //   4448: aload 24
-    //   4450: astore 27
-    //   4452: lload 12
-    //   4454: lstore 14
-    //   4456: lconst_0
-    //   4457: lstore 12
-    //   4459: aload 26
-    //   4461: astore 25
-    //   4463: iconst_0
-    //   4464: istore 5
-    //   4466: iload 22
-    //   4468: istore_3
-    //   4469: aload 28
-    //   4471: astore 24
-    //   4473: aload 31
-    //   4475: astore 26
-    //   4477: aload 30
-    //   4479: astore 28
-    //   4481: goto -3103 -> 1378
-    //   4484: astore 29
-    //   4486: aconst_null
-    //   4487: astore 31
-    //   4489: aload 25
-    //   4491: astore 28
-    //   4493: aconst_null
-    //   4494: astore 30
-    //   4496: aload 24
-    //   4498: astore 27
-    //   4500: lload 12
-    //   4502: lstore 14
-    //   4504: lconst_0
-    //   4505: lstore 12
-    //   4507: iconst_0
-    //   4508: istore 5
-    //   4510: aload 26
-    //   4512: astore 25
-    //   4514: iconst_1
-    //   4515: istore_3
-    //   4516: aload 28
-    //   4518: astore 24
-    //   4520: aload 31
-    //   4522: astore 26
-    //   4524: aload 30
-    //   4526: astore 28
-    //   4528: goto -3150 -> 1378
-    //   4531: astore 29
-    //   4533: iconst_1
-    //   4534: istore_3
-    //   4535: aconst_null
-    //   4536: astore 26
-    //   4538: aconst_null
-    //   4539: astore 30
-    //   4541: aload 24
-    //   4543: astore 27
-    //   4545: lload 12
-    //   4547: lstore 14
-    //   4549: lconst_0
-    //   4550: lstore 12
-    //   4552: iconst_0
-    //   4553: istore 5
-    //   4555: aload 25
-    //   4557: astore 24
-    //   4559: aload 28
-    //   4561: astore 25
-    //   4563: aload 30
-    //   4565: astore 28
-    //   4567: goto -3189 -> 1378
-    //   4570: astore 29
-    //   4572: iconst_1
-    //   4573: istore_3
-    //   4574: aconst_null
-    //   4575: astore 30
-    //   4577: lload 12
-    //   4579: lstore 16
-    //   4581: lload 14
-    //   4583: lstore 12
-    //   4585: aload 24
-    //   4587: astore 26
-    //   4589: iconst_0
-    //   4590: istore 5
-    //   4592: aload 25
-    //   4594: astore 24
-    //   4596: aload 26
-    //   4598: astore 25
-    //   4600: lload 16
-    //   4602: lstore 14
-    //   4604: aload 30
-    //   4606: astore 26
-    //   4608: goto -3230 -> 1378
-    //   4611: astore 29
-    //   4613: iconst_1
-    //   4614: istore_3
-    //   4615: lload 12
-    //   4617: lstore 16
-    //   4619: lload 14
-    //   4621: lstore 12
-    //   4623: aload 24
-    //   4625: astore 30
-    //   4627: iconst_0
-    //   4628: istore 5
-    //   4630: aload 25
-    //   4632: astore 24
-    //   4634: aload 30
-    //   4636: astore 25
-    //   4638: lload 16
-    //   4640: lstore 14
-    //   4642: goto -3264 -> 1378
-    //   4645: astore 29
-    //   4647: aload 24
-    //   4649: astore 31
-    //   4651: iconst_1
-    //   4652: istore_3
-    //   4653: aload 25
-    //   4655: astore 24
-    //   4657: aload 26
-    //   4659: astore 30
-    //   4661: lload 12
-    //   4663: lstore 16
-    //   4665: lload 14
-    //   4667: lstore 12
-    //   4669: aload 31
-    //   4671: astore 25
-    //   4673: lload 16
-    //   4675: lstore 14
-    //   4677: aload 28
-    //   4679: astore 26
-    //   4681: aload 30
-    //   4683: astore 28
-    //   4685: goto -3307 -> 1378
-    //   4688: astore 28
-    //   4690: goto -3759 -> 931
-    //   4693: iconst_0
-    //   4694: istore 5
-    //   4696: aconst_null
-    //   4697: astore 28
-    //   4699: aconst_null
-    //   4700: astore 26
-    //   4702: goto -1430 -> 3272
-    //   4705: aload 24
-    //   4707: astore 27
-    //   4709: aload 26
-    //   4711: astore 24
-    //   4713: goto -4387 -> 326
-    //   4716: iconst_0
-    //   4717: istore_3
-    //   4718: goto -2236 -> 2482
+    //   4439: astore 30
+    //   4441: aconst_null
+    //   4442: astore 28
+    //   4444: aload 24
+    //   4446: astore 27
+    //   4448: lload 12
+    //   4450: lstore 14
+    //   4452: lconst_0
+    //   4453: lstore 12
+    //   4455: iconst_0
+    //   4456: istore 5
+    //   4458: iload 22
+    //   4460: istore_3
+    //   4461: aload 25
+    //   4463: astore 24
+    //   4465: aload 26
+    //   4467: astore 25
+    //   4469: aload 30
+    //   4471: astore 26
+    //   4473: goto -3095 -> 1378
+    //   4476: astore 29
+    //   4478: aconst_null
+    //   4479: astore 30
+    //   4481: aconst_null
+    //   4482: astore 28
+    //   4484: aload 24
+    //   4486: astore 27
+    //   4488: lload 12
+    //   4490: lstore 14
+    //   4492: lconst_0
+    //   4493: lstore 12
+    //   4495: iconst_0
+    //   4496: istore 5
+    //   4498: iconst_1
+    //   4499: istore_3
+    //   4500: aload 25
+    //   4502: astore 24
+    //   4504: aload 26
+    //   4506: astore 25
+    //   4508: aload 30
+    //   4510: astore 26
+    //   4512: goto -3134 -> 1378
+    //   4515: astore 29
+    //   4517: iconst_1
+    //   4518: istore_3
+    //   4519: aconst_null
+    //   4520: astore 31
+    //   4522: aload 25
+    //   4524: astore 26
+    //   4526: aconst_null
+    //   4527: astore 30
+    //   4529: aload 24
+    //   4531: astore 27
+    //   4533: lload 12
+    //   4535: lstore 14
+    //   4537: lconst_0
+    //   4538: lstore 12
+    //   4540: iconst_0
+    //   4541: istore 5
+    //   4543: aload 28
+    //   4545: astore 25
+    //   4547: aload 26
+    //   4549: astore 24
+    //   4551: aload 31
+    //   4553: astore 26
+    //   4555: aload 30
+    //   4557: astore 28
+    //   4559: goto -3181 -> 1378
+    //   4562: astore 29
+    //   4564: iconst_1
+    //   4565: istore_3
+    //   4566: aconst_null
+    //   4567: astore 30
+    //   4569: lload 12
+    //   4571: lstore 16
+    //   4573: lload 14
+    //   4575: lstore 12
+    //   4577: aload 24
+    //   4579: astore 26
+    //   4581: iconst_0
+    //   4582: istore 5
+    //   4584: aload 25
+    //   4586: astore 24
+    //   4588: aload 26
+    //   4590: astore 25
+    //   4592: lload 16
+    //   4594: lstore 14
+    //   4596: aload 30
+    //   4598: astore 26
+    //   4600: goto -3222 -> 1378
+    //   4603: astore 29
+    //   4605: iconst_1
+    //   4606: istore_3
+    //   4607: lload 12
+    //   4609: lstore 16
+    //   4611: lload 14
+    //   4613: lstore 12
+    //   4615: aload 24
+    //   4617: astore 30
+    //   4619: iconst_0
+    //   4620: istore 5
+    //   4622: aload 25
+    //   4624: astore 24
+    //   4626: aload 30
+    //   4628: astore 25
+    //   4630: lload 16
+    //   4632: lstore 14
+    //   4634: goto -3256 -> 1378
+    //   4637: astore 29
+    //   4639: aload 24
+    //   4641: astore 31
+    //   4643: iconst_1
+    //   4644: istore_3
+    //   4645: aload 25
+    //   4647: astore 24
+    //   4649: aload 26
+    //   4651: astore 30
+    //   4653: lload 12
+    //   4655: lstore 16
+    //   4657: lload 14
+    //   4659: lstore 12
+    //   4661: aload 31
+    //   4663: astore 25
+    //   4665: lload 16
+    //   4667: lstore 14
+    //   4669: aload 28
+    //   4671: astore 26
+    //   4673: aload 30
+    //   4675: astore 28
+    //   4677: goto -3299 -> 1378
+    //   4680: astore 28
+    //   4682: goto -3751 -> 931
+    //   4685: iconst_0
+    //   4686: istore 5
+    //   4688: aconst_null
+    //   4689: astore 28
+    //   4691: aconst_null
+    //   4692: astore 26
+    //   4694: goto -1422 -> 3272
+    //   4697: aload 24
+    //   4699: astore 27
+    //   4701: aload 26
+    //   4703: astore 24
+    //   4705: goto -4379 -> 326
+    //   4708: iconst_0
+    //   4709: istore_3
+    //   4710: goto -2228 -> 2482
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	4721	0	this	HttpCommunicator
-    //   0	4721	1	paramHttpMsg	HttpMsg
-    //   0	4721	2	paramhiu	hiu
-    //   0	4721	3	paramBoolean	boolean
+    //   0	4713	0	this	HttpCommunicator
+    //   0	4713	1	paramHttpMsg	HttpMsg
+    //   0	4713	2	paramhiu	hiu
+    //   0	4713	3	paramBoolean	boolean
     //   54	4289	4	i1	int
-    //   206	4489	5	i2	int
+    //   206	4481	5	i2	int
     //   336	3958	6	i3	int
     //   45	4255	7	i4	int
     //   34	4207	8	i5	int
-    //   31	4135	9	i6	int
+    //   31	3705	9	i6	int
     //   22	3266	10	i7	int
     //   2949	43	11	i8	int
-    //   63	4605	12	l1	long
-    //   25	4651	14	l2	long
-    //   296	4378	16	l3	long
-    //   332	3390	18	l4	long
-    //   2890	1291	20	l5	long
-    //   28	4439	22	bool1	boolean
+    //   63	4597	12	l1	long
+    //   25	4643	14	l2	long
+    //   296	4370	16	l3	long
+    //   340	3841	18	l4	long
+    //   2942	167	20	l5	long
+    //   28	4431	22	bool1	boolean
     //   439	3	23	bool2	boolean
     //   60	3410	24	localObject1	Object
     //   3562	132	24	localException1	Exception
@@ -2882,14 +2878,14 @@ public class HttpCommunicator
     //   3845	1	24	localIOException3	IOException
     //   3877	1	24	localObject3	Object
     //   3914	42	24	localObject4	Object
-    //   3964	748	24	localObject5	Object
+    //   3964	740	24	localObject5	Object
     //   57	3670	25	localObject6	Object
     //   3850	1	25	localIOException4	IOException
     //   3855	1	25	localIOException5	IOException
     //   3860	1	25	localIOException6	IOException
-    //   3883	789	25	localObject7	Object
-    //   51	4659	26	localObject8	Object
-    //   87	4621	27	localObject9	Object
+    //   3883	781	25	localObject7	Object
+    //   51	4651	26	localObject8	Object
+    //   87	4613	27	localObject9	Object
     //   147	3802	28	localObject10	Object
     //   3953	10	28	localObject11	Object
     //   3987	1	28	localObject12	Object
@@ -2898,9 +2894,9 @@ public class HttpCommunicator
     //   4031	10	28	localObject15	Object
     //   4065	161	28	localObject16	Object
     //   4230	7	28	localObject17	Object
-    //   4261	423	28	localObject18	Object
-    //   4688	1	28	localThrowable1	Throwable
-    //   4697	1	28	localObject19	Object
+    //   4261	415	28	localObject18	Object
+    //   4680	1	28	localThrowable1	Throwable
+    //   4689	1	28	localObject19	Object
     //   344	981	29	localObject20	Object
     //   1337	52	29	localThrowable2	Throwable
     //   1731	1538	29	localObject21	Object
@@ -2914,20 +2910,20 @@ public class HttpCommunicator
     //   4353	1	29	localThrowable5	Throwable
     //   4396	1	29	localThrowable6	Throwable
     //   4436	1	29	localThrowable7	Throwable
-    //   4484	1	29	localThrowable8	Throwable
-    //   4531	1	29	localThrowable9	Throwable
-    //   4570	1	29	localThrowable10	Throwable
-    //   4611	1	29	localThrowable11	Throwable
-    //   4645	1	29	localThrowable12	Throwable
+    //   4476	1	29	localThrowable8	Throwable
+    //   4515	1	29	localThrowable9	Throwable
+    //   4562	1	29	localThrowable10	Throwable
+    //   4603	1	29	localThrowable11	Throwable
+    //   4637	1	29	localThrowable12	Throwable
     //   7	1368	30	localObject27	Object
     //   1744	33	30	localObject28	Object
     //   2868	1239	30	localObject29	Object
     //   4113	14	30	localObject30	Object
     //   4148	14	30	localObject31	Object
-    //   4191	491	30	localObject32	Object
+    //   4191	483	30	localObject32	Object
     //   19	4237	31	localObject33	Object
     //   4266	18	31	localObject34	Object
-    //   4373	297	31	localObject35	Object
+    //   4356	306	31	localObject35	Object
     //   13	2819	32	localObject36	Object
     //   10	3734	33	localObject37	Object
     //   16	3724	34	localObject38	Object
@@ -3130,13 +3126,13 @@ public class HttpCommunicator
     //   284	303	4353	java/lang/Throwable
     //   65	89	4396	java/lang/Throwable
     //   93	117	4436	java/lang/Throwable
-    //   120	149	4484	java/lang/Throwable
-    //   149	175	4531	java/lang/Throwable
-    //   2854	2863	4570	java/lang/Throwable
-    //   2863	2870	4611	java/lang/Throwable
-    //   3272	3283	4645	java/lang/Throwable
-    //   909	914	4688	java/lang/Throwable
-    //   926	931	4688	java/lang/Throwable
+    //   120	149	4476	java/lang/Throwable
+    //   149	175	4515	java/lang/Throwable
+    //   2854	2863	4562	java/lang/Throwable
+    //   2863	2870	4603	java/lang/Throwable
+    //   3272	3283	4637	java/lang/Throwable
+    //   909	914	4680	java/lang/Throwable
+    //   926	931	4680	java/lang/Throwable
   }
   
   public void a(HttpMsg paramHttpMsg, String paramString1, String paramString2)

@@ -43,7 +43,7 @@ public abstract class ProfileActivity
   public static final int Z = 71;
   private static final int a = 22578;
   protected static final String a = "http://m.3g.qq.com/forward.html?sid=%s&fr=1&tuin=%s&page=tmsglist";
-  public static final int[][] a = { { 2130840270, 2131361842 }, { 2130840273, 2131361843 }, { 2130840276, 2131361844 } };
+  public static final int[][] a;
   public static final int aA = 999;
   public static final int aB = 4;
   public static final int aC = 5;
@@ -135,6 +135,13 @@ public abstract class ProfileActivity
   public static final String y = "com.tencent.mobileqq.action.template_setup";
   public static final int z = 25;
   public static final String z = "AllInOne";
+  
+  static
+  {
+    int[] arrayOfInt1 = { 2130840273, 2131361843 };
+    int[] arrayOfInt2 = { 2130840276, 2131361844 };
+    a = new int[][] { { 2130840270, 2131361842 }, arrayOfInt1, arrayOfInt2 };
+  }
   
   public static int a(int paramInt)
   {

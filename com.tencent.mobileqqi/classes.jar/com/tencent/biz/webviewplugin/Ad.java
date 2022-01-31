@@ -129,7 +129,7 @@ public class Ad
     if (str == null) {
       localObject = "";
     }
-    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.0" + "." + "6500");
+    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.1" + "." + "6600");
     localWebSettings.setSaveFormData(false);
     localWebSettings.setSavePassword(false);
     localWebSettings.setBuiltInZoomControls(true);

@@ -1776,7 +1776,7 @@ public class PhoneContactManagerImp
   
   public boolean e()
   {
-    if (!"6.0.0".equals(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("phone_version_run", ""))) {}
+    if (!"6.0.1".equals(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("phone_version_run", ""))) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
@@ -1803,7 +1803,7 @@ public class PhoneContactManagerImp
   
   public boolean f()
   {
-    if (!"6.0.0".equals(this.jdField_a_of_type_AndroidContentSharedPreferences.getString("phone_contact_need_star_v", ""))) {}
+    if (!"6.0.1".equals(this.jdField_a_of_type_AndroidContentSharedPreferences.getString("phone_contact_need_star_v", ""))) {}
     for (boolean bool = true; bool; bool = false)
     {
       int i = d();
@@ -1908,7 +1908,7 @@ public class PhoneContactManagerImp
       QLog.d("PhoneContact", 2, "runPhoneContact");
     }
     SharedPreferences.Editor localEditor = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString("phone_version_run", "6.0.0");
+    localEditor.putString("phone_version_run", "6.0.1");
     localEditor.commit();
   }
   
@@ -1916,7 +1916,7 @@ public class PhoneContactManagerImp
   {
     j();
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putString("phone_contact_need_star_v", "6.0.0");
+    localEditor.putString("phone_contact_need_star_v", "6.0.1");
     localEditor.commit();
   }
   

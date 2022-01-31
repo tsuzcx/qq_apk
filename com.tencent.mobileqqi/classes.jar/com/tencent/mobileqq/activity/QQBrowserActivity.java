@@ -509,7 +509,7 @@ public class QQBrowserActivity
   
   protected String a()
   {
-    return "6.0.0";
+    return "6.0.1";
   }
   
   public String a(String paramString)
@@ -1537,7 +1537,7 @@ public class QQBrowserActivity
     }
     for (;;)
     {
-      localWebSettings.setUserAgentString((String)localObject1 + " " + "QQ/" + "5.0.0" + "." + "6500" + "." + AppSetting.a(this));
+      localWebSettings.setUserAgentString((String)localObject1 + " " + "QQ/" + "5.0.0" + "." + "6600" + "." + AppSetting.a(this));
       localWebSettings.setSaveFormData(false);
       localWebSettings.setSavePassword(false);
       localWebSettings.setBuiltInZoomControls(true);

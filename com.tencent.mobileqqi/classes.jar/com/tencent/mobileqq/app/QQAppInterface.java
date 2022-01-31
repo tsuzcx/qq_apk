@@ -1859,7 +1859,7 @@ public class QQAppInterface
   public void B()
   {
     ISecureModuleService localISecureModuleService = a();
-    if (localISecureModuleService.register(new ProductInfo(6, i(), Integer.parseInt("6500"), 201, null, getAccount())) == 0)
+    if (localISecureModuleService.register(new ProductInfo(6, i(), Integer.parseInt("6600"), 201, null, getAccount())) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("security_scan", 2, "Start Security Scan");
@@ -4502,7 +4502,7 @@ public class QQAppInterface
   
   public String b()
   {
-    return "6.0.0";
+    return "6.0.1";
   }
   
   public String b(int paramInt, String paramString)

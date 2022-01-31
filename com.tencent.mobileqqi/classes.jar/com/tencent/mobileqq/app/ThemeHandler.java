@@ -107,8 +107,8 @@ public class ThemeHandler
     localObject1 = new ThemeAuth.ReqBody();
     ((ThemeAuth.ReqBody)localObject1).uint32_sub_cmd.set(1);
     ((ThemeAuth.ReqBody)localObject1).int32_plat_id.set(109);
-    ((ThemeAuth.ReqBody)localObject1).str_qq_version.set("6.0.0.6500");
-    ((ThemeAuth.ReqBody)localObject1).uint32_qq_version.set(Integer.parseInt("6500"));
+    ((ThemeAuth.ReqBody)localObject1).str_qq_version.set("6.0.1.6600");
+    ((ThemeAuth.ReqBody)localObject1).uint32_qq_version.set(Integer.parseInt("6600"));
     ((ThemeAuth.ReqBody)localObject1).msg_subcmd0x1_req_auth.set(localException);
     ((ThemeAuth.ReqBody)localObject1).setHasFlag(true);
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.a.a(), "AuthSvr.ThemeAuth");

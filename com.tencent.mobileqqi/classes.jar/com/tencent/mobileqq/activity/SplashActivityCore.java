@@ -195,7 +195,7 @@ public class SplashActivityCore
       this.handler.removeMessages(4);
       this.handler.removeMessages(5);
       paramMessage = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-      paramMessage.putString("qq_version", "6500");
+      paramMessage.putString("qq_version", "6600");
       paramMessage.commit();
       if ((this.mWrapperActivity.getAppRuntime() != null) && (this.mWrapperActivity.getAppRuntime().isLogin()))
       {

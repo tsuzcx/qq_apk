@@ -227,7 +227,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("6.0.0");
+    localGetAppinfoRequest.qqv.set("6.0.1");
     localGetAppinfoRequest.setHasFlag(true);
     paramContext = new NewIntent(paramContext, ProtoServlet.class);
     paramContext.putExtra("uin", paramString);

@@ -1113,9 +1113,9 @@ public class SplashActivity
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.i();
         if (QLog.isColorLevel()) {
-          QLog.d("Version", 2, "QQ_Version:6.0.0.6500");
+          QLog.d("Version", 2, "QQ_Version:6.0.1.6600");
         }
-        QLog.sBuildNumber = "6.0.0.6500.2018-05-20.r24935.YingYongBao";
+        QLog.sBuildNumber = "6.0.1.6600.2018-09-26.r25030.YingYongBao";
         StartupTracker.a("Main_OnCreat", null);
         n();
         paramBundle = getSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);

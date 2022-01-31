@@ -30,20 +30,16 @@ public class hee
         TroopShareUtility.a(this.a, TroopShareUtility.a(this.a).e());
         return;
       case 1: 
-        TroopShareUtility.a(this.a, 4);
-        TroopShareUtility.a(this.a, TroopShareUtility.a(this.a).e());
-        return;
-      case 2: 
         TroopShareUtility.a(this.a, 0);
         if (!TroopShareUtility.a(this.a).a) {
-          break label208;
+          break label177;
         }
         this.a.g();
       }
     } while (!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity));
     ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
     return;
-    label208:
+    label177:
     TroopShareUtility.a(this.a, TroopShareUtility.a(this.a).e());
     return;
     TroopShareUtility.a(this.a, 5);

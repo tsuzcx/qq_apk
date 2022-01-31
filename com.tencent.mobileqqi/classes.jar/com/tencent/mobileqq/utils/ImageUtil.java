@@ -851,18 +851,18 @@ public class ImageUtil
     //   59: astore 10
     //   61: aload 11
     //   63: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   66: istore 9
+    //   66: istore 8
     //   68: aload 11
     //   70: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   73: istore 8
+    //   73: istore 9
     //   75: fconst_1
     //   76: fstore 4
-    //   78: iload 8
-    //   80: iload 9
+    //   78: iload 9
+    //   80: iload 8
     //   82: if_icmple +144 -> 226
     //   85: iload_1
     //   86: i2f
-    //   87: iload 9
+    //   87: iload 8
     //   89: i2f
     //   90: fconst_1
     //   91: fmul
@@ -870,7 +870,7 @@ public class ImageUtil
     //   93: fstore 5
     //   95: fload 5
     //   97: fstore 4
-    //   99: iload 8
+    //   99: iload 9
     //   101: i2f
     //   102: fload 5
     //   104: fmul
@@ -879,7 +879,7 @@ public class ImageUtil
     //   107: fcmpl
     //   108: ifle +302 -> 410
     //   111: iconst_0
-    //   112: iload 8
+    //   112: iload 9
     //   114: i2f
     //   115: fload 5
     //   117: fmul
@@ -903,8 +903,8 @@ public class ImageUtil
     //   146: aload 11
     //   148: iconst_0
     //   149: iconst_0
-    //   150: iload 9
-    //   152: iload 8
+    //   150: iload 8
+    //   152: iload 9
     //   154: aload 10
     //   156: iconst_1
     //   157: invokestatic 568	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
@@ -941,12 +941,12 @@ public class ImageUtil
     //   222: astore_0
     //   223: aload 10
     //   225: areturn
-    //   226: iload 8
-    //   228: iload 9
+    //   226: iload 9
+    //   228: iload 8
     //   230: if_icmpge +180 -> 410
     //   233: iload_2
     //   234: i2f
-    //   235: iload 8
+    //   235: iload 9
     //   237: i2f
     //   238: fconst_1
     //   239: fmul
@@ -954,7 +954,7 @@ public class ImageUtil
     //   241: fstore 5
     //   243: fload 5
     //   245: fstore 4
-    //   247: iload 9
+    //   247: iload 8
     //   249: i2f
     //   250: fload 5
     //   252: fmul
@@ -962,7 +962,7 @@ public class ImageUtil
     //   254: i2f
     //   255: fcmpl
     //   256: ifle +154 -> 410
-    //   259: iload 9
+    //   259: iload 8
     //   261: i2f
     //   262: fload 5
     //   264: fmul
@@ -1060,8 +1060,8 @@ public class ImageUtil
     //   93	192	5	f2	float
     //   127	285	6	i1	int
     //   130	285	7	i2	int
-    //   73	163	8	i3	int
-    //   66	194	9	i4	int
+    //   66	194	8	i3	int
+    //   73	163	9	i4	int
     //   16	277	10	localObject1	Object
     //   344	25	10	localObject2	Object
     //   395	1	10	localObject3	Object
@@ -2647,16 +2647,16 @@ public class ImageUtil
     //   160: ifne +102 -> 262
     //   163: aload_1
     //   164: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   167: istore 10
-    //   169: aload_1
-    //   170: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   173: istore_0
-    //   174: iload 10
-    //   176: iload 7
-    //   178: if_icmpgt +12 -> 190
-    //   181: aload_1
-    //   182: astore 13
-    //   184: iload_0
+    //   167: istore_0
+    //   168: aload_1
+    //   169: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
+    //   172: istore 10
+    //   174: iload_0
+    //   175: iload 7
+    //   177: if_icmpgt +13 -> 190
+    //   180: aload_1
+    //   181: astore 13
+    //   183: iload 10
     //   185: iload 7
     //   187: if_icmple +11 -> 198
     //   190: aload_1
@@ -3470,7 +3470,7 @@ public class ImageUtil
     //   0	1769	7	paramInt4	int
     //   0	1769	8	paramBoolean1	boolean
     //   0	1769	9	paramBoolean2	boolean
-    //   167	489	10	i1	int
+    //   172	484	10	i1	int
     //   467	566	11	l1	long
     //   76	746	13	localObject1	Object
     //   842	1	13	localIOException1	IOException
@@ -4440,151 +4440,151 @@ public class ImageUtil
     //   1: astore 9
     //   3: aload_0
     //   4: invokestatic 1201	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   7: astore 10
-    //   9: aload 10
-    //   11: ifnonnull +16 -> 27
-    //   14: iconst_0
-    //   15: ifeq +11 -> 26
-    //   18: new 618	java/lang/NullPointerException
-    //   21: dup
-    //   22: invokespecial 619	java/lang/NullPointerException:<init>	()V
-    //   25: athrow
-    //   26: return
-    //   27: aload 10
-    //   29: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   32: istore 7
-    //   34: aload 10
-    //   36: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   39: istore 8
-    //   41: iload_2
-    //   42: i2f
-    //   43: iload 7
-    //   45: i2f
-    //   46: fdiv
-    //   47: fstore 6
-    //   49: iload_3
-    //   50: i2f
-    //   51: iload 8
-    //   53: i2f
-    //   54: fdiv
-    //   55: fstore 5
-    //   57: new 479	android/graphics/Matrix
-    //   60: dup
-    //   61: invokespecial 480	android/graphics/Matrix:<init>	()V
-    //   64: astore_0
-    //   65: aload_0
-    //   66: fload 6
-    //   68: fload 5
-    //   70: invokevirtual 484	android/graphics/Matrix:postScale	(FF)Z
-    //   73: pop
-    //   74: aload 10
-    //   76: iconst_0
-    //   77: iconst_0
-    //   78: iload 7
-    //   80: iload 8
-    //   82: aload_0
-    //   83: iconst_0
-    //   84: invokestatic 568	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   87: astore 10
-    //   89: new 755	java/io/FileOutputStream
-    //   92: dup
-    //   93: new 333	java/io/File
-    //   96: dup
-    //   97: aload_1
-    //   98: invokespecial 669	java/io/File:<init>	(Ljava/lang/String;)V
-    //   101: invokespecial 756	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   104: astore_1
-    //   105: aload_1
-    //   106: astore_0
-    //   107: aload 10
-    //   109: getstatic 869	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   112: iload 4
-    //   114: aload_1
-    //   115: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   118: ifeq +15 -> 133
+    //   7: astore_0
+    //   8: aload_0
+    //   9: ifnonnull +16 -> 25
+    //   12: iconst_0
+    //   13: ifeq +11 -> 24
+    //   16: new 618	java/lang/NullPointerException
+    //   19: dup
+    //   20: invokespecial 619	java/lang/NullPointerException:<init>	()V
+    //   23: athrow
+    //   24: return
+    //   25: aload_0
+    //   26: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
+    //   29: istore 7
+    //   31: aload_0
+    //   32: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
+    //   35: istore 8
+    //   37: iload_2
+    //   38: i2f
+    //   39: iload 7
+    //   41: i2f
+    //   42: fdiv
+    //   43: fstore 6
+    //   45: iload_3
+    //   46: i2f
+    //   47: iload 8
+    //   49: i2f
+    //   50: fdiv
+    //   51: fstore 5
+    //   53: new 479	android/graphics/Matrix
+    //   56: dup
+    //   57: invokespecial 480	android/graphics/Matrix:<init>	()V
+    //   60: astore 10
+    //   62: aload 10
+    //   64: fload 6
+    //   66: fload 5
+    //   68: invokevirtual 484	android/graphics/Matrix:postScale	(FF)Z
+    //   71: pop
+    //   72: aload_0
+    //   73: iconst_0
+    //   74: iconst_0
+    //   75: iload 7
+    //   77: iload 8
+    //   79: aload 10
+    //   81: iconst_0
+    //   82: invokestatic 568	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   85: astore 10
+    //   87: new 755	java/io/FileOutputStream
+    //   90: dup
+    //   91: new 333	java/io/File
+    //   94: dup
+    //   95: aload_1
+    //   96: invokespecial 669	java/io/File:<init>	(Ljava/lang/String;)V
+    //   99: invokespecial 756	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   102: astore_1
+    //   103: aload_1
+    //   104: astore_0
+    //   105: aload 10
+    //   107: getstatic 869	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   110: iload 4
+    //   112: aload_1
+    //   113: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   116: ifeq +15 -> 131
+    //   119: aload_1
+    //   120: astore_0
     //   121: aload_1
-    //   122: astore_0
-    //   123: aload_1
-    //   124: invokevirtual 1136	java/io/FileOutputStream:flush	()V
+    //   122: invokevirtual 1136	java/io/FileOutputStream:flush	()V
+    //   125: aload_1
+    //   126: astore_0
     //   127: aload_1
-    //   128: astore_0
-    //   129: aload_1
-    //   130: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   133: aload_1
-    //   134: ifnull -108 -> 26
-    //   137: aload_1
-    //   138: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   128: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   131: aload_1
+    //   132: ifnull -108 -> 24
+    //   135: aload_1
+    //   136: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   139: return
+    //   140: astore_0
     //   141: return
-    //   142: astore_0
-    //   143: return
-    //   144: astore 9
-    //   146: aconst_null
-    //   147: astore_1
-    //   148: aload_1
-    //   149: astore_0
-    //   150: aload 9
-    //   152: invokevirtual 251	java/lang/Exception:printStackTrace	()V
-    //   155: aload_1
-    //   156: ifnull -130 -> 26
-    //   159: aload_1
-    //   160: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   142: astore 9
+    //   144: aconst_null
+    //   145: astore_1
+    //   146: aload_1
+    //   147: astore_0
+    //   148: aload 9
+    //   150: invokevirtual 251	java/lang/Exception:printStackTrace	()V
+    //   153: aload_1
+    //   154: ifnull -130 -> 24
+    //   157: aload_1
+    //   158: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   161: return
+    //   162: astore_0
     //   163: return
     //   164: astore_0
-    //   165: return
-    //   166: astore_0
-    //   167: aload 9
-    //   169: astore_1
-    //   170: aload_1
-    //   171: ifnull +7 -> 178
-    //   174: aload_1
-    //   175: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   178: aload_0
-    //   179: athrow
-    //   180: astore_0
-    //   181: return
-    //   182: astore_1
-    //   183: goto -5 -> 178
-    //   186: astore 9
-    //   188: aload_0
-    //   189: astore_1
-    //   190: aload 9
-    //   192: astore_0
-    //   193: goto -23 -> 170
-    //   196: astore 9
-    //   198: goto -50 -> 148
+    //   165: aload 9
+    //   167: astore_1
+    //   168: aload_1
+    //   169: ifnull +7 -> 176
+    //   172: aload_1
+    //   173: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   176: aload_0
+    //   177: athrow
+    //   178: astore_0
+    //   179: return
+    //   180: astore_1
+    //   181: goto -5 -> 176
+    //   184: astore 9
+    //   186: aload_0
+    //   187: astore_1
+    //   188: aload 9
+    //   190: astore_0
+    //   191: goto -23 -> 168
+    //   194: astore 9
+    //   196: goto -50 -> 146
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	201	0	paramString1	String
-    //   0	201	1	paramString2	String
-    //   0	201	2	paramInt1	int
-    //   0	201	3	paramInt2	int
-    //   0	201	4	paramInt3	int
-    //   55	14	5	f1	float
-    //   47	20	6	f2	float
-    //   32	47	7	i1	int
-    //   39	42	8	i2	int
+    //   0	199	0	paramString1	String
+    //   0	199	1	paramString2	String
+    //   0	199	2	paramInt1	int
+    //   0	199	3	paramInt2	int
+    //   0	199	4	paramInt3	int
+    //   51	16	5	f1	float
+    //   43	22	6	f2	float
+    //   29	47	7	i1	int
+    //   35	43	8	i2	int
     //   1	1	9	localObject1	Object
-    //   144	24	9	localException1	Exception
-    //   186	5	9	localObject2	Object
-    //   196	1	9	localException2	Exception
-    //   7	101	10	localBitmap	Bitmap
+    //   142	24	9	localException1	Exception
+    //   184	5	9	localObject2	Object
+    //   194	1	9	localException2	Exception
+    //   60	46	10	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   137	141	142	java/io/IOException
-    //   3	9	144	java/lang/Exception
-    //   27	105	144	java/lang/Exception
-    //   159	163	164	java/io/IOException
-    //   3	9	166	finally
-    //   27	105	166	finally
-    //   18	26	180	java/io/IOException
-    //   174	178	182	java/io/IOException
-    //   107	121	186	finally
-    //   123	127	186	finally
-    //   129	133	186	finally
-    //   150	155	186	finally
-    //   107	121	196	java/lang/Exception
-    //   123	127	196	java/lang/Exception
-    //   129	133	196	java/lang/Exception
+    //   135	139	140	java/io/IOException
+    //   3	8	142	java/lang/Exception
+    //   25	103	142	java/lang/Exception
+    //   157	161	162	java/io/IOException
+    //   3	8	164	finally
+    //   25	103	164	finally
+    //   16	24	178	java/io/IOException
+    //   172	176	180	java/io/IOException
+    //   105	119	184	finally
+    //   121	125	184	finally
+    //   127	131	184	finally
+    //   148	153	184	finally
+    //   105	119	194	java/lang/Exception
+    //   121	125	194	java/lang/Exception
+    //   127	131	194	java/lang/Exception
   }
   
   private static void a(String paramString, Throwable paramThrowable)

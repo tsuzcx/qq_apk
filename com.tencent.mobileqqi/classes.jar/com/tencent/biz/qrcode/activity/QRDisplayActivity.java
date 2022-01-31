@@ -213,7 +213,7 @@ public class QRDisplayActivity
     {
       localStringBuffer.append((String)paramList.get(m));
       if (m != paramList.size() - 1) {
-        localStringBuffer.append("、");
+        localStringBuffer.append("銆�");
       }
       m += 1;
     }
@@ -775,8 +775,6 @@ public class QRDisplayActivity
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
       }
       DiscussionInfoCardActivity.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, 2, this.jdField_j_of_type_JavaLangString, this.h, this.f, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-      continue;
-      DiscussionInfoCardActivity.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, this.i, this.h, this.f);
       continue;
       DiscussionInfoCardActivity.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Long, this.i, this.f);
     }

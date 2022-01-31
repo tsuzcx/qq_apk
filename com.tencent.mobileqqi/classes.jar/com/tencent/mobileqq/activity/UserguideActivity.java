@@ -33,14 +33,14 @@ public class UserguideActivity
   public static boolean a(Context paramContext)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("qq_version", null);
-    if (!"6500".equals(paramContext)) {}
+    if (!"6600".equals(paramContext)) {}
     for (e = true;; e = false)
     {
       if (jdField_b_of_type_Boolean) {
         e = false;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6500" + "isNeed " + e);
+        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6600" + "isNeed " + e);
       }
       e = false;
       return e;

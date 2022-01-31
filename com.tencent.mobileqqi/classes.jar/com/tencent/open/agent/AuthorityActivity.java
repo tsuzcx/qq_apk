@@ -670,134 +670,142 @@ public class AuthorityActivity
     //   60: invokevirtual 678	java/io/File:exists	()Z
     //   63: istore 4
     //   65: iload 4
-    //   67: ifne +25 -> 92
-    //   70: iconst_0
-    //   71: ifeq +11 -> 82
-    //   74: new 785	java/lang/NullPointerException
-    //   77: dup
-    //   78: invokespecial 786	java/lang/NullPointerException:<init>	()V
-    //   81: athrow
-    //   82: aload 5
-    //   84: areturn
-    //   85: astore_1
-    //   86: aload_1
-    //   87: invokevirtual 787	java/lang/Exception:printStackTrace	()V
-    //   90: aconst_null
-    //   91: areturn
-    //   92: new 789	java/io/DataInputStream
-    //   95: dup
-    //   96: new 791	java/io/FileInputStream
-    //   99: dup
-    //   100: aload_1
-    //   101: invokespecial 792	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   104: invokespecial 795	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_1
-    //   108: aload_1
-    //   109: invokevirtual 798	java/io/DataInputStream:readLong	()J
-    //   112: invokestatic 698	java/lang/System:currentTimeMillis	()J
-    //   115: ldc2_w 319
-    //   118: ldiv
-    //   119: lcmp
-    //   120: ifle +61 -> 181
-    //   123: aload_1
-    //   124: invokevirtual 801	java/io/DataInputStream:available	()I
-    //   127: istore_3
-    //   128: iload_3
-    //   129: ifle +52 -> 181
-    //   132: iload_3
-    //   133: newarray byte
-    //   135: astore 6
-    //   137: aload_1
-    //   138: aload 6
-    //   140: invokevirtual 805	java/io/DataInputStream:read	([B)I
-    //   143: pop
-    //   144: aload_1
-    //   145: invokevirtual 806	java/io/DataInputStream:close	()V
-    //   148: aload 6
-    //   150: aload_2
-    //   151: ldc_w 708
-    //   154: invokevirtual 712	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   157: invokestatic 808	com/tencent/util/ThreeDes:b	([B[B)[B
-    //   160: astore_2
-    //   161: aload_2
-    //   162: astore 5
-    //   164: aload_1
-    //   165: ifnull -83 -> 82
-    //   168: aload_1
-    //   169: invokevirtual 806	java/io/DataInputStream:close	()V
-    //   172: aload_2
-    //   173: areturn
-    //   174: astore_1
-    //   175: aload_1
-    //   176: invokevirtual 787	java/lang/Exception:printStackTrace	()V
-    //   179: aload_2
-    //   180: areturn
+    //   67: ifne +27 -> 94
+    //   70: aload 5
+    //   72: astore_2
+    //   73: iconst_0
+    //   74: ifeq +11 -> 85
+    //   77: new 785	java/lang/NullPointerException
+    //   80: dup
+    //   81: invokespecial 786	java/lang/NullPointerException:<init>	()V
+    //   84: athrow
+    //   85: aload_2
+    //   86: areturn
+    //   87: astore_1
+    //   88: aload_1
+    //   89: invokevirtual 787	java/lang/Exception:printStackTrace	()V
+    //   92: aconst_null
+    //   93: areturn
+    //   94: new 789	java/io/DataInputStream
+    //   97: dup
+    //   98: new 791	java/io/FileInputStream
+    //   101: dup
+    //   102: aload_1
+    //   103: invokespecial 792	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   106: invokespecial 795	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   109: astore_1
+    //   110: aload_1
+    //   111: invokevirtual 798	java/io/DataInputStream:readLong	()J
+    //   114: invokestatic 698	java/lang/System:currentTimeMillis	()J
+    //   117: ldc2_w 319
+    //   120: ldiv
+    //   121: lcmp
+    //   122: ifle +66 -> 188
+    //   125: aload_1
+    //   126: invokevirtual 801	java/io/DataInputStream:available	()I
+    //   129: istore_3
+    //   130: iload_3
+    //   131: ifle +57 -> 188
+    //   134: iload_3
+    //   135: newarray byte
+    //   137: astore 6
+    //   139: aload_1
+    //   140: aload 6
+    //   142: invokevirtual 805	java/io/DataInputStream:read	([B)I
+    //   145: pop
+    //   146: aload_1
+    //   147: invokevirtual 806	java/io/DataInputStream:close	()V
+    //   150: aload 6
+    //   152: aload_2
+    //   153: ldc_w 708
+    //   156: invokevirtual 712	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   159: invokestatic 808	com/tencent/util/ThreeDes:b	([B[B)[B
+    //   162: astore_2
+    //   163: aload_2
+    //   164: astore 5
+    //   166: aload 5
+    //   168: astore_2
+    //   169: aload_1
+    //   170: ifnull -85 -> 85
+    //   173: aload_1
+    //   174: invokevirtual 806	java/io/DataInputStream:close	()V
+    //   177: aload 5
+    //   179: areturn
+    //   180: astore_1
     //   181: aload_1
-    //   182: ifnull -100 -> 82
-    //   185: aload_1
-    //   186: invokevirtual 806	java/io/DataInputStream:close	()V
-    //   189: aconst_null
-    //   190: areturn
-    //   191: astore_1
-    //   192: aload_1
-    //   193: invokevirtual 787	java/lang/Exception:printStackTrace	()V
-    //   196: aconst_null
-    //   197: areturn
-    //   198: astore_1
+    //   182: invokevirtual 787	java/lang/Exception:printStackTrace	()V
+    //   185: aload 5
+    //   187: areturn
+    //   188: aload 5
+    //   190: astore_2
+    //   191: aload_1
+    //   192: ifnull -107 -> 85
+    //   195: aload_1
+    //   196: invokevirtual 806	java/io/DataInputStream:close	()V
     //   199: aconst_null
-    //   200: astore_1
-    //   201: aload_1
-    //   202: ifnull -120 -> 82
-    //   205: aload_1
-    //   206: invokevirtual 806	java/io/DataInputStream:close	()V
+    //   200: areturn
+    //   201: astore_1
+    //   202: aload_1
+    //   203: invokevirtual 787	java/lang/Exception:printStackTrace	()V
+    //   206: aconst_null
+    //   207: areturn
+    //   208: astore_1
     //   209: aconst_null
-    //   210: areturn
-    //   211: astore_1
-    //   212: aload_1
-    //   213: invokevirtual 787	java/lang/Exception:printStackTrace	()V
-    //   216: aconst_null
-    //   217: areturn
-    //   218: astore_2
-    //   219: aconst_null
-    //   220: astore_1
-    //   221: aload_1
-    //   222: ifnull +7 -> 229
+    //   210: astore_1
+    //   211: aload 5
+    //   213: astore_2
+    //   214: aload_1
+    //   215: ifnull -130 -> 85
+    //   218: aload_1
+    //   219: invokevirtual 806	java/io/DataInputStream:close	()V
+    //   222: aconst_null
+    //   223: areturn
+    //   224: astore_1
     //   225: aload_1
-    //   226: invokevirtual 806	java/io/DataInputStream:close	()V
-    //   229: aload_2
-    //   230: athrow
-    //   231: astore_1
-    //   232: aload_1
-    //   233: invokevirtual 787	java/lang/Exception:printStackTrace	()V
-    //   236: goto -7 -> 229
-    //   239: astore_2
-    //   240: goto -19 -> 221
-    //   243: astore_2
-    //   244: goto -43 -> 201
+    //   226: invokevirtual 787	java/lang/Exception:printStackTrace	()V
+    //   229: aconst_null
+    //   230: areturn
+    //   231: astore_2
+    //   232: aconst_null
+    //   233: astore_1
+    //   234: aload_1
+    //   235: ifnull +7 -> 242
+    //   238: aload_1
+    //   239: invokevirtual 806	java/io/DataInputStream:close	()V
+    //   242: aload_2
+    //   243: athrow
+    //   244: astore_1
+    //   245: aload_1
+    //   246: invokevirtual 787	java/lang/Exception:printStackTrace	()V
+    //   249: goto -7 -> 242
+    //   252: astore_2
+    //   253: goto -19 -> 234
+    //   256: astore_2
+    //   257: goto -46 -> 211
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	247	0	this	AuthorityActivity
-    //   0	247	1	paramString1	String
-    //   0	247	2	paramString2	String
-    //   127	6	3	i1	int
+    //   0	260	0	this	AuthorityActivity
+    //   0	260	1	paramString1	String
+    //   0	260	2	paramString2	String
+    //   129	6	3	i1	int
     //   63	3	4	bool	boolean
-    //   1	162	5	localObject	Object
-    //   135	14	6	arrayOfByte	byte[]
+    //   1	211	5	str	String
+    //   137	14	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   74	82	85	java/lang/Exception
-    //   168	172	174	java/lang/Exception
-    //   185	189	191	java/lang/Exception
-    //   3	65	198	java/io/IOException
-    //   92	108	198	java/io/IOException
-    //   205	209	211	java/lang/Exception
-    //   3	65	218	finally
-    //   92	108	218	finally
-    //   225	229	231	java/lang/Exception
-    //   108	128	239	finally
-    //   132	161	239	finally
-    //   108	128	243	java/io/IOException
-    //   132	161	243	java/io/IOException
+    //   77	85	87	java/lang/Exception
+    //   173	177	180	java/lang/Exception
+    //   195	199	201	java/lang/Exception
+    //   3	65	208	java/io/IOException
+    //   94	110	208	java/io/IOException
+    //   218	222	224	java/lang/Exception
+    //   3	65	231	finally
+    //   94	110	231	finally
+    //   238	242	244	java/lang/Exception
+    //   110	130	252	finally
+    //   134	163	252	finally
+    //   110	130	256	java/io/IOException
+    //   134	163	256	java/io/IOException
   }
   
   protected byte[] a(byte[] paramArrayOfByte)

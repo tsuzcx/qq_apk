@@ -29,7 +29,7 @@ public class dld
         str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
         str3 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
         RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
-      } while ((!bool1) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, "6.0.0", str1) < 0));
+      } while ((!bool1) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, "6.0.1", str1) < 0));
       if (QLog.isColorLevel()) {
         QLog.d("RegisterPhoneNumActivity", 2, "update ui.");
       }

@@ -250,11 +250,11 @@ public class QPSingleUpdEngine
     Object localObject1 = new String();
     int i = 0;
     Object localObject2;
-    while (i < "6.0.0".length())
+    while (i < "6.0.1".length())
     {
       localObject2 = localObject1;
-      if ("6.0.0".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("6.0.0".charAt(i)));
+      if ("6.0.1".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("6.0.1".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;

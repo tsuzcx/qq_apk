@@ -29,7 +29,7 @@ public class iep
   
   protected Boolean a(Void... paramVarArgs)
   {
-    paramVarArgs = PluginUtils.installPlugin(BaseApplication.getContext(), this.b, "24935");
+    paramVarArgs = PluginUtils.installPlugin(BaseApplication.getContext(), this.b, "25030");
     if (paramVarArgs != null) {
       PluginStatisticsCollector.a(BaseApplication.getContext(), this.c, this.b, paramVarArgs);
     }

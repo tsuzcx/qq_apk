@@ -1107,7 +1107,7 @@ public class FriendProfileCardActivity
           QLog.d("Q.profilecard.FrdProfileCard", 2, "initHeaderView");
         }
         if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) {
-          break label425;
+          break label423;
         }
         l = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentTemplateId;
         i = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet;
@@ -1127,13 +1127,13 @@ public class FriendProfileCardActivity
           continue;
         }
         if (0 == 0) {
-          break label171;
+          break label170;
         }
       }
       finally {}
       if (i != 0)
       {
-        label171:
+        label170:
         if (QLog.isColorLevel()) {
           QLog.d("Q.profilecard.FrdProfileCard", 2, "initHeaderView cardTemplate is null reset headerView");
         }
@@ -1154,7 +1154,7 @@ public class FriendProfileCardActivity
         try
         {
           if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate == null) {
-            break label394;
+            break label392;
           }
           l = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.a;
           throw new NullPointerException();
@@ -1172,7 +1172,7 @@ public class FriendProfileCardActivity
           s();
         }
         continue;
-        label394:
+        label392:
         this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
         d();
@@ -1181,7 +1181,7 @@ public class FriendProfileCardActivity
       {
         a(null);
         continue;
-        label425:
+        label423:
         if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataContactCard != null)
         {
           if (QLog.isColorLevel()) {

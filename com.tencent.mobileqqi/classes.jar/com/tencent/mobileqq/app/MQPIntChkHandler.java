@@ -85,7 +85,7 @@ public class MQPIntChkHandler
     localAppInfo.uint32_platform_type.set(1);
     String str = BaseApplication.getContext().getPackageName();
     localAppInfo.bytes_package_name.set(ByteStringMicro.copyFromUtf8(str));
-    localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8("6.0.0.24935"));
+    localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8("6.0.1.25030"));
     localAppInfo.uint32_intchk_module_version.set(IntChkUtil.jdField_a_of_type_Int);
     int m = n;
     switch (NetworkCenter.a().a())

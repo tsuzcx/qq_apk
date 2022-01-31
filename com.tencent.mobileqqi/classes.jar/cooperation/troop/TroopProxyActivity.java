@@ -34,7 +34,7 @@ public class TroopProxyActivity
   
   public static Dialog a(Activity paramActivity)
   {
-    if (!PluginUtils.isPluginInstalled(paramActivity, "troop_plugin.apk", "24935"))
+    if (!PluginUtils.isPluginInstalled(paramActivity, "troop_plugin.apk", "25030"))
     {
       QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131427376));
       localQQProgressDialog.a(paramActivity.getString(2131559634));

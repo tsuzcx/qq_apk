@@ -17,8 +17,7 @@ public class LinkShareActionSheetBuilder
   public static final int b = 3;
   public static final int c = 2;
   public static final int d = 0;
-  public static final int e = 1;
-  public static final int f = 4;
+  public static final int e = 4;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   
   public LinkShareActionSheetBuilder(BaseActivity paramBaseActivity)
@@ -43,7 +42,6 @@ public class LinkShareActionSheetBuilder
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
     localActionSheet.a(2131562908);
     localActionSheet.c(2131562137);
-    localActionSheet.c(2131562715);
     localActionSheet.c(2131561882);
     localActionSheet.a(paramOnButtonClickListener);
     return localActionSheet;

@@ -347,7 +347,7 @@ public class RedTouchWebviewHandler
       localObject1 = paramString;
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).uin.set(Long.parseLong(this.mRuntime.a().a()));
       localObject1 = paramString;
-      ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).clientver.set("6.0.0.6500");
+      ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).clientver.set("6.0.1.6600");
       localObject1 = paramString;
       ((BusinessInfoCheckUpdate.ReportReqBody)localObject4).platid.set(109);
       localObject1 = paramString;

@@ -61,12 +61,42 @@ public class UniformDownloadMgr
   
   static
   {
-    String[] arrayOfString1 = { ".mpc", "application/vnd.mpohun.certificate" };
-    String[] arrayOfString2 = { ".mpe", "video/mpeg" };
-    String[] arrayOfString3 = { ".mpga", "audio/mpeg" };
-    String[] arrayOfString4 = { ".xml", "text/plain" };
-    String[] arrayOfString5 = { ".z", "application/x-compress" };
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { ".3gp", "video/3gpp" }, { ".apk", "application/vnd.android.package-archive" }, { ".asf", "video/x-ms-asf" }, { ".avi", "video/x-msvideo" }, { ".bin", "application/octet-stream" }, { ".bmp", "image/bmp" }, { ".c", "text/plain" }, { ".class", "application/octet-stream" }, { ".conf", "text/plain" }, { ".cpp", "text/plain" }, { ".doc", "application/msword" }, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, { ".xls", "application/vnd.ms-excel" }, { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, { ".exe", "application/octet-stream" }, { ".gif", "image/gif" }, { ".gtar", "application/x-gtar" }, { ".gz", "application/x-gzip" }, { ".h", "text/plain" }, { ".htm", "text/html" }, { ".html", "text/html" }, { ".jar", "application/java-archive" }, { ".java", "text/plain" }, { ".jpeg", "image/jpeg" }, { ".jpg", "image/jpeg" }, { ".js", "application/x-javascript" }, { ".log", "text/plain" }, { ".m3u", "audio/x-mpegurl" }, { ".m4a", "audio/mp4a-latm" }, { ".m4b", "audio/mp4a-latm" }, { ".m4p", "audio/mp4a-latm" }, { ".m4u", "video/vnd.mpegurl" }, { ".m4v", "video/x-m4v" }, { ".mov", "video/quicktime" }, { ".mp2", "audio/x-mpeg" }, { ".mp3", "audio/x-mpeg" }, { ".mp4", "video/mp4" }, arrayOfString1, arrayOfString2, { ".mpeg", "video/mpeg" }, { ".mpg", "video/mpeg" }, { ".mpg4", "video/mp4" }, arrayOfString3, { ".msg", "application/vnd.ms-outlook" }, { ".ogg", "audio/ogg" }, { ".pdf", "application/pdf" }, { ".png", "image/png" }, { ".pps", "application/vnd.ms-powerpoint" }, { ".ppt", "application/vnd.ms-powerpoint" }, { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" }, { ".prop", "text/plain" }, { ".rc", "text/plain" }, { ".rmvb", "audio/x-pn-realaudio" }, { ".rtf", "application/rtf" }, { ".sh", "text/plain" }, { ".tar", "application/x-tar" }, { ".tgz", "application/x-compressed" }, { ".txt", "text/plain" }, { ".wav", "audio/x-wav" }, { ".wma", "audio/x-ms-wma" }, { ".wmv", "audio/x-ms-wmv" }, { ".wps", "application/vnd.ms-works" }, arrayOfString4, arrayOfString5, { ".zip", "application/x-zip-compressed" }, { "", "*/*" } };
+    String[] arrayOfString1 = { ".apk", "application/vnd.android.package-archive" };
+    String[] arrayOfString2 = { ".avi", "video/x-msvideo" };
+    String[] arrayOfString3 = { ".c", "text/plain" };
+    String[] arrayOfString4 = { ".class", "application/octet-stream" };
+    String[] arrayOfString5 = { ".cpp", "text/plain" };
+    String[] arrayOfString6 = { ".doc", "application/msword" };
+    String[] arrayOfString7 = { ".xls", "application/vnd.ms-excel" };
+    String[] arrayOfString8 = { ".htm", "text/html" };
+    String[] arrayOfString9 = { ".html", "text/html" };
+    String[] arrayOfString10 = { ".jar", "application/java-archive" };
+    String[] arrayOfString11 = { ".java", "text/plain" };
+    String[] arrayOfString12 = { ".jpeg", "image/jpeg" };
+    String[] arrayOfString13 = { ".js", "application/x-javascript" };
+    String[] arrayOfString14 = { ".m4a", "audio/mp4a-latm" };
+    String[] arrayOfString15 = { ".m4b", "audio/mp4a-latm" };
+    String[] arrayOfString16 = { ".m4v", "video/x-m4v" };
+    String[] arrayOfString17 = { ".mov", "video/quicktime" };
+    String[] arrayOfString18 = { ".mp2", "audio/x-mpeg" };
+    String[] arrayOfString19 = { ".mp4", "video/mp4" };
+    String[] arrayOfString20 = { ".mpg4", "video/mp4" };
+    String[] arrayOfString21 = { ".mpga", "audio/mpeg" };
+    String[] arrayOfString22 = { ".pdf", "application/pdf" };
+    String[] arrayOfString23 = { ".pps", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString24 = { ".ppt", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString25 = { ".prop", "text/plain" };
+    String[] arrayOfString26 = { ".rc", "text/plain" };
+    String[] arrayOfString27 = { ".rmvb", "audio/x-pn-realaudio" };
+    String[] arrayOfString28 = { ".rtf", "application/rtf" };
+    String[] arrayOfString29 = { ".tar", "application/x-tar" };
+    String[] arrayOfString30 = { ".tgz", "application/x-compressed" };
+    String[] arrayOfString31 = { ".wma", "audio/x-ms-wma" };
+    String[] arrayOfString32 = { ".wmv", "audio/x-ms-wmv" };
+    String[] arrayOfString33 = { ".wps", "application/vnd.ms-works" };
+    String[] arrayOfString34 = { ".xml", "text/plain" };
+    String[] arrayOfString35 = { "", "*/*" };
+    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { ".3gp", "video/3gpp" }, arrayOfString1, { ".asf", "video/x-ms-asf" }, arrayOfString2, { ".bin", "application/octet-stream" }, { ".bmp", "image/bmp" }, arrayOfString3, arrayOfString4, { ".conf", "text/plain" }, arrayOfString5, arrayOfString6, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, arrayOfString7, { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, { ".exe", "application/octet-stream" }, { ".gif", "image/gif" }, { ".gtar", "application/x-gtar" }, { ".gz", "application/x-gzip" }, { ".h", "text/plain" }, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, arrayOfString12, { ".jpg", "image/jpeg" }, arrayOfString13, { ".log", "text/plain" }, { ".m3u", "audio/x-mpegurl" }, arrayOfString14, arrayOfString15, { ".m4p", "audio/mp4a-latm" }, { ".m4u", "video/vnd.mpegurl" }, arrayOfString16, arrayOfString17, arrayOfString18, { ".mp3", "audio/x-mpeg" }, arrayOfString19, { ".mpc", "application/vnd.mpohun.certificate" }, { ".mpe", "video/mpeg" }, { ".mpeg", "video/mpeg" }, { ".mpg", "video/mpeg" }, arrayOfString20, arrayOfString21, { ".msg", "application/vnd.ms-outlook" }, { ".ogg", "audio/ogg" }, arrayOfString22, { ".png", "image/png" }, arrayOfString23, arrayOfString24, { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" }, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, { ".sh", "text/plain" }, arrayOfString29, arrayOfString30, { ".txt", "text/plain" }, { ".wav", "audio/x-wav" }, arrayOfString31, arrayOfString32, arrayOfString33, arrayOfString34, { ".z", "application/x-compress" }, { ".zip", "application/x-zip-compressed" }, arrayOfString35 };
   }
   
   private UniformDownloadMgr()

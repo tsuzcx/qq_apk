@@ -105,10 +105,10 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     String str = paramResourcePluginInfo.strGotoUrl;
-    Object localObject2 = "&version=6.0.0.6500&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
+    Object localObject2 = "&version=6.0.1.6600&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
     Object localObject1 = localObject2;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp")) {
-      localObject1 = (String)localObject2 + "&adtag=6500";
+      localObject1 = (String)localObject2 + "&adtag=6600";
     }
     str = str + (String)localObject1;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp"))

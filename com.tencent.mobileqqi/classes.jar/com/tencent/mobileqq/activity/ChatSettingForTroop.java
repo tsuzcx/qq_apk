@@ -783,9 +783,9 @@ public class ChatSettingForTroop
   {
     long l1 = System.currentTimeMillis();
     Object localObject1 = (LayoutInflater)getSystemService("layout_inflater");
-    label2718:
-    label2847:
-    label3105:
+    label2695:
+    label2824:
+    label3082:
     for (;;)
     {
       Object localObject3;
@@ -870,7 +870,7 @@ public class ChatSettingForTroop
           ((TextView)localObject6).setCompoundDrawables((Drawable)localObject7, null, null, null);
           ((TextView)localObject6).setCompoundDrawablePadding(10);
           if (!TextUtils.isEmpty((CharSequence)localObject5)) {
-            break label2718;
+            break label2695;
           }
           ((View)localObject4).setVisibility(8);
           ((View)localObject4).setVisibility(8);
@@ -882,7 +882,7 @@ public class ChatSettingForTroop
           ((TextView)localObject4).setCompoundDrawables((Drawable)localObject5, null, null, null);
           ((TextView)localObject4).setCompoundDrawablePadding(10);
           if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString)) {
-            break label2734;
+            break label2711;
           }
           ((View)localObject3).setVisibility(8);
           ((View)localObject3).setVisibility(8);
@@ -910,11 +910,9 @@ public class ChatSettingForTroop
           ((ImageView)localObject6).setImageResource(2130838519);
           ((View)localObject4).setTag(Integer.valueOf(0));
           ((View)localObject4).setOnClickListener(this);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject4;
-          ((LinearLayout)localObject3).addView((View)localObject4, (ViewGroup.LayoutParams)localObject1);
           localObject4 = new LinearLayout.LayoutParams(PublicAccountUtil.a(this, 1.0F), PublicAccountUtil.a(this, 25.0F));
           ((LinearLayout.LayoutParams)localObject1).gravity = 16;
-          ((LinearLayout)localObject3).addView(View.inflate(this, 2130903457, null), (ViewGroup.LayoutParams)localObject4);
+          View.inflate(this, 2130903457, null);
           localObject5 = View.inflate(this, 2130903455, null);
           ((View)localObject5).setFocusable(true);
           ((View)localObject5).setClickable(true);
@@ -940,7 +938,7 @@ public class ChatSettingForTroop
           {
             i1 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_Int;
             if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i == 0) {
-              break label2755;
+              break label2732;
             }
             bool = true;
             a((View)localObject5, i1, bool);
@@ -973,20 +971,20 @@ public class ChatSettingForTroop
           localObject1 = View.inflate(this, 2130903646, null);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           if (this.ao != 1) {
-            break label2857;
+            break label2834;
           }
           localObject1 = View.inflate(this, 2130903638, null);
           this.jdField_a_of_type_ArrayOfAndroidViewView[9] = localObject1;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_g_of_type_JavaLangString)) {
-            break label2761;
+            break label2738;
           }
           a(9, 1, (View)localObject1, getString(2131562426), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.e(), true);
           localObject1 = View.inflate(this, 2130903643, null);
           this.jdField_a_of_type_ArrayOfAndroidViewView[5] = localObject1;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e()) {
-            break label2788;
+            break label2765;
           }
           a(5, 2, (View)localObject1, getString(2131562359), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString, true);
           a((View)localObject1);
@@ -997,7 +995,7 @@ public class ChatSettingForTroop
           this.jdField_a_of_type_ArrayOfAndroidViewView[8] = localObject1;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e()) {
-            break label2814;
+            break label2791;
           }
           ((View)localObject1).setVisibility(0);
           ((TextView)localObject3).setVisibility(8);
@@ -1030,7 +1028,7 @@ public class ChatSettingForTroop
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           localObject1 = new FormSimpleItem(this);
           if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_m_of_type_JavaLangString)) {
-            break label2824;
+            break label2801;
           }
           a(20, 1, (FormSimpleItem)localObject1, getString(2131562907), "", true);
           this.jdField_a_of_type_ArrayOfAndroidViewView[20] = localObject1;
@@ -1040,7 +1038,7 @@ public class ChatSettingForTroop
           this.jdField_a_of_type_ArrayOfAndroidViewView[18] = localObject1;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
           if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_m_of_type_JavaLangString)) {
-            break label2847;
+            break label2824;
           }
           localObject3 = this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_m_of_type_JavaLangString;
           b(18, 3, (View)localObject1, getString(2131562235), (CharSequence)localObject3, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.e());
@@ -1082,7 +1080,7 @@ public class ChatSettingForTroop
             ((View)localObject3).setOnClickListener(this);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
             if (!this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_a_of_type_Boolean) {
-              break label3105;
+              break label3082;
             }
             ((View)localObject3).setTag(Integer.valueOf(27));
             ((Button)localObject3).setText(2131561794);
@@ -1104,27 +1102,28 @@ public class ChatSettingForTroop
       ((View)localObject4).setVisibility(0);
       ((TextView)localObject6).setText((CharSequence)localObject5);
       continue;
-      label2734:
+      label2711:
       ((View)localObject3).setVisibility(0);
       ((TextView)localObject4).setText(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_k_of_type_JavaLangString);
       continue;
-      label2755:
+      label2732:
       bool = false;
       continue;
-      label2761:
+      label2738:
       a(9, 1, localOutOfMemoryError, getString(2131562426), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_g_of_type_JavaLangString, true);
       continue;
-      label2788:
+      label2765:
       a(5, 3, localOutOfMemoryError, getString(2131562359), this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.jdField_h_of_type_JavaLangString, true);
       continue;
-      label2814:
+      label2791:
       localOutOfMemoryError.setVisibility(8);
       continue;
+      label2801:
       a(20, 0, localOutOfMemoryError, getString(2131562907), "", true);
       continue;
       localOutOfMemoryError.setVisibility(8);
       continue;
-      label2857:
+      label2834:
       if (this.ao == 2)
       {
         Object localObject2 = View.inflate(this, 2130903643, null);

@@ -17,7 +17,7 @@ public class cjs
       this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.h = DBUtils.a(this.a.b.a(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c);
       this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.h + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i);
+        QLog.i("Q.chatopttroop", 2, "浠庣兢绌洪棿杩斿洖锛屾洿鏂扮兢绌洪棿鏈璁℃暟锛� troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.h + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i);
       }
       return;
     }

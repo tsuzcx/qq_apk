@@ -50,16 +50,16 @@ public class MagicfaceResLoader
     //   39: astore_1
     //   40: aload_1
     //   41: invokevirtual 61	java/io/InputStream:available	()I
-    //   44: istore_2
-    //   45: iload_2
+    //   44: istore_3
+    //   45: iload_3
     //   46: newarray byte
     //   48: astore 6
     //   50: aload_1
     //   51: aload 6
     //   53: invokevirtual 65	java/io/InputStream:read	([B)I
-    //   56: istore_3
-    //   57: iload_3
-    //   58: iload_2
+    //   56: istore_2
+    //   57: iload_2
+    //   58: iload_3
     //   59: if_icmpeq +3 -> 62
     //   62: aload_1
     //   63: invokevirtual 68	java/io/InputStream:close	()V
@@ -102,8 +102,8 @@ public class MagicfaceResLoader
     //   start	length	slot	name	signature
     //   0	121	0	this	MagicfaceResLoader
     //   0	121	1	paramString	String
-    //   44	16	2	i	int
-    //   56	4	3	j	int
+    //   56	4	2	i	int
+    //   44	16	3	j	int
     //   16	3	4	bool	boolean
     //   1	92	5	arrayOfByte1	byte[]
     //   107	1	5	localObject1	Object

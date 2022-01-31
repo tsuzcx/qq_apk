@@ -798,7 +798,7 @@ public class ProfileCardUtil
   public static String a(Context paramContext)
   {
     paramContext = paramContext.getDir("profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.0";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "6.0.1";
   }
   
   public static String a(Context paramContext, ProfileCardInfo paramProfileCardInfo)

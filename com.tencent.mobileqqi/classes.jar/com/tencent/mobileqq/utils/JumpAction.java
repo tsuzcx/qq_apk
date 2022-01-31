@@ -1371,10 +1371,10 @@ public class JumpAction
       {
         if ((this.br != null) && (this.br.trim().equalsIgnoreCase("com.qq.yijianfankui")))
         {
-          localStringBuffer.append("&version=6.0.0.6500");
+          localStringBuffer.append("&version=6.0.1.6600");
           localStringBuffer.append("&appid=" + AppSetting.a);
           localStringBuffer.append("&QUA=" + QUA.a());
-          localStringBuffer.append("&adtag=6500");
+          localStringBuffer.append("&adtag=6600");
           if (localStringBuffer.indexOf("sid=") < 0) {
             localStringBuffer.append("&sid=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSid());
           }

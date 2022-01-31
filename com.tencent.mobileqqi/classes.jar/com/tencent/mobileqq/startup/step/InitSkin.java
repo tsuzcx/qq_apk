@@ -98,7 +98,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"24935".equals(str))) {
+        if ((i != AppSetting.a) || (!"25030".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -216,7 +216,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"24935".equals(str))) {
+        if ((i != AppSetting.a) || (!"25030".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -338,7 +338,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"24935".equals(str))) {
+        if ((i != AppSetting.a) || (!"25030".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {

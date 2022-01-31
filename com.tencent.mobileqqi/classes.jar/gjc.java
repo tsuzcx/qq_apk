@@ -89,7 +89,7 @@ public class gjc
       if (i < localObject1.length)
       {
         localObject2 = localObject1[i].getName();
-        if ((((String)localObject2).startsWith("qvip_profile_template.json")) && (!((String)localObject2).endsWith("6.0.0")))
+        if ((((String)localObject2).startsWith("qvip_profile_template.json")) && (!((String)localObject2).endsWith("6.0.1")))
         {
           FileUtils.d((String)localObject2);
           if (QLog.isColorLevel()) {

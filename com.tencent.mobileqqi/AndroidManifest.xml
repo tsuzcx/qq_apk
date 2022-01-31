@@ -67,7 +67,7 @@
     <uses-feature android:name="android.hardware.location.network" android:required="false"/>
     <uses-feature android:name="android.hardware.telephony" android:required="false"/>
     <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0d0bb7" android:name="com.tencent.common.app.BaseApplicationImpl" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0262">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="5210c49e-e925-4bc1-94c4-9c4d6d771a1d"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="bea6757a-daab-4b18-a579-458e330641ac"/>
         <meta-data android:name="DBVersion" android:value="85"/>
         <meta-data android:name="SC_DBVersion" android:value="26"/>
         <meta-data android:name="QfavDBVersion" android:value="5"/>
@@ -314,10 +314,10 @@
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.FriendProfileCardActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopMemberGagActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ProfileCardMoreActivity" android:screenOrientation="portrait"/>
-        <provider android:authorities="qqi.favorites" android:name="cooperation.qqfav.content.FavoritesProvider" android:permission="com.tencent.msg.permission.pushnotify" android:process=":qqfav"/>
-        <provider android:authorities="qqi.friendlist" android:name="com.tencent.mobileqq.content.FriendListProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
-        <provider android:authorities="qqi.message" android:name="com.tencent.mobileqq.content.MessageProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
-        <provider android:authorities="com.tencent.i.common.config.provider.QZoneConfigProvider" android:name="com.tencent.common.config.provider.QZoneConfigProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
+        <provider android:authorities="qqi.favorites" android:exported="true" android:name="cooperation.qqfav.content.FavoritesProvider" android:permission="com.tencent.msg.permission.pushnotify" android:process=":qqfav"/>
+        <provider android:authorities="qqi.friendlist" android:exported="true" android:name="com.tencent.mobileqq.content.FriendListProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
+        <provider android:authorities="qqi.message" android:exported="true" android:name="com.tencent.mobileqq.content.MessageProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
+        <provider android:authorities="com.tencent.i.common.config.provider.QZoneConfigProvider" android:exported="true" android:name="com.tencent.common.config.provider.QZoneConfigProvider" android:permission="com.tencent.msg.permission.pushnotify"/>
         <receiver android:exported="false" android:name="com.tencent.mobileqq.app.PushBroadcastReceiver">
             <intent-filter>
                 <action android:name="tencent.notify.friend.message"/>

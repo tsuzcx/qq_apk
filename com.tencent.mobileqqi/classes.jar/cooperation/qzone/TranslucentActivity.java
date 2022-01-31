@@ -40,7 +40,7 @@ public class TranslucentActivity
   private void a(Intent paramIntent)
   {
     QQProgressDialog localQQProgressDialog;
-    if (!PluginUtils.isPluginInstalled(this, "qzone_plugin.apk", "24935"))
+    if (!PluginUtils.isPluginInstalled(this, "qzone_plugin.apk", "25030"))
     {
       localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131427376));
       localQQProgressDialog.a(getString(2131559634));

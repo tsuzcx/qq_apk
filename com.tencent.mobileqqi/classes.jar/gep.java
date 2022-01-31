@@ -19,7 +19,7 @@ public final class gep
       if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
         return;
       }
-      if ("V 6.0.0.6500".contains("CheckIn"))
+      if ("V 6.0.1.6600".contains("CheckIn"))
       {
         AlertDialog localAlertDialog = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).create();
         localAlertDialog.show();

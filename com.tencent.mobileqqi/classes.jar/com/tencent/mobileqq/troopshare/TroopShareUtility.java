@@ -536,7 +536,6 @@ public class TroopShareUtility
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131562908);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new hed(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562137);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562715);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131560516);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131561882);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new hee(this));

@@ -27,7 +27,7 @@ public class gia
       paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
       paramDialogInterface.append("&plat=1");
       paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=6.0.0.6500");
+      paramDialogInterface.append("&version=6.0.1.6600");
       paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
       paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
       paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

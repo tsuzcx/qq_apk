@@ -126,38 +126,49 @@ public class DexReleasor
     int j = 0;
     int m = 0;
     int i = 0;
-    label348:
-    label496:
-    label507:
+    label526:
+    label537:
     for (;;)
     {
       if ((j != 0) && (m != 0))
       {
         bool = readLocalHeader(this.mRaf);
         break;
+        label348:
         MyZipEntry localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject2);
         String str = localMyZipEntry.getName();
         k = j;
         n = m;
+        if (str == null) {
+          break label526;
+        }
+        if (str.contains("../"))
+        {
+          k = j;
+          n = m;
+          break label526;
+        }
+        k = j;
+        n = m;
         if (TextUtils.isEmpty(str)) {
-          break label496;
+          break label526;
         }
         if (str.equals(sExtraDexes[0]))
         {
           this.mEntries.put(str, localMyZipEntry);
           k = 1;
           n = m;
-          break label496;
+          break label526;
         }
         k = j;
         n = m;
         if (!str.equals(sExtraDexes[1])) {
-          break label496;
+          break label526;
         }
         this.mEntries.put(str, localMyZipEntry);
         n = 1;
         k = j;
-        break label496;
+        break label526;
       }
       bool = false;
       break;
@@ -171,7 +182,7 @@ public class DexReleasor
       for (;;)
       {
         if (i >= i1) {
-          break label507;
+          break label537;
         }
         if ((j == 0) || (m == 0)) {
           break label348;
@@ -263,7 +274,7 @@ public class DexReleasor
     //   2: aload_0
     //   3: getfield 62	com/tencent/commonsdk/soload/DexReleasor:mEntries	Ljava/util/LinkedHashMap;
     //   6: aload_2
-    //   7: invokevirtual 210	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   7: invokevirtual 215	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   10: checkcast 166	com/tencent/commonsdk/soload/MyZipEntry
     //   13: astore_2
     //   14: aload_2
@@ -276,37 +287,37 @@ public class DexReleasor
     //   23: areturn
     //   24: new 79	java/io/File
     //   27: dup
-    //   28: new 250	java/lang/StringBuilder
+    //   28: new 255	java/lang/StringBuilder
     //   31: dup
-    //   32: invokespecial 251	java/lang/StringBuilder:<init>	()V
+    //   32: invokespecial 256	java/lang/StringBuilder:<init>	()V
     //   35: aload_0
     //   36: getfield 66	com/tencent/commonsdk/soload/DexReleasor:mDstPath	Ljava/lang/String;
-    //   39: invokevirtual 255	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_1
-    //   43: invokevirtual 255	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
     //   52: astore_1
     //   53: aload_1
     //   54: invokevirtual 85	java/io/File:exists	()Z
     //   57: ifne +8 -> 65
     //   60: aload_1
-    //   61: invokevirtual 261	java/io/File:createNewFile	()Z
+    //   61: invokevirtual 266	java/io/File:createNewFile	()Z
     //   64: pop
-    //   65: new 263	java/io/FileOutputStream
+    //   65: new 268	java/io/FileOutputStream
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 266	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   70: invokespecial 271	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   73: astore 10
-    //   75: new 268	java/io/BufferedOutputStream
+    //   75: new 273	java/io/BufferedOutputStream
     //   78: dup
     //   79: aload 10
-    //   81: invokespecial 271	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   81: invokespecial 276	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   84: astore 11
     //   86: aload_0
     //   87: getfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   90: aload_2
-    //   91: getfield 214	com/tencent/commonsdk/soload/MyZipEntry:mLocalHeaderRelOffset	J
+    //   91: getfield 219	com/tencent/commonsdk/soload/MyZipEntry:mLocalHeaderRelOffset	J
     //   94: invokevirtual 109	java/io/RandomAccessFile:seek	(J)V
     //   97: aload_0
     //   98: getfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
@@ -322,9 +333,9 @@ public class DexReleasor
     //   117: bipush 26
     //   119: if_icmpeq +18 -> 137
     //   122: aload 11
-    //   124: invokevirtual 274	java/io/BufferedOutputStream:close	()V
+    //   124: invokevirtual 279	java/io/BufferedOutputStream:close	()V
     //   127: aload 10
-    //   129: invokevirtual 275	java/io/FileOutputStream:close	()V
+    //   129: invokevirtual 280	java/io/FileOutputStream:close	()V
     //   132: aconst_null
     //   133: astore_1
     //   134: goto -114 -> 20
@@ -332,10 +343,10 @@ public class DexReleasor
     //   139: getstatic 46	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
     //   142: iconst_0
     //   143: bipush 26
-    //   145: invokevirtual 278	java/io/BufferedOutputStream:write	([BII)V
+    //   145: invokevirtual 283	java/io/BufferedOutputStream:write	([BII)V
     //   148: ldc 10
-    //   150: ldc_w 280
-    //   153: invokevirtual 284	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   150: ldc_w 285
+    //   153: invokevirtual 289	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   156: astore 12
     //   158: aload 12
     //   160: arraylength
@@ -343,40 +354,40 @@ public class DexReleasor
     //   163: aload_0
     //   164: aload 11
     //   166: iload 4
-    //   168: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   168: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   171: pop
     //   172: aload_0
     //   173: aload 11
     //   175: aload_2
-    //   176: getfield 290	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
-    //   179: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   176: getfield 295	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
+    //   179: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   182: pop
     //   183: aload 11
     //   185: aload 12
-    //   187: invokevirtual 292	java/io/BufferedOutputStream:write	([B)V
+    //   187: invokevirtual 297	java/io/BufferedOutputStream:write	([B)V
     //   190: aload_0
     //   191: getfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   194: aload_2
-    //   195: getfield 214	com/tencent/commonsdk/soload/MyZipEntry:mLocalHeaderRelOffset	J
-    //   198: ldc2_w 293
+    //   195: getfield 219	com/tencent/commonsdk/soload/MyZipEntry:mLocalHeaderRelOffset	J
+    //   198: ldc2_w 298
     //   201: ladd
     //   202: aload_2
-    //   203: getfield 297	com/tencent/commonsdk/soload/MyZipEntry:nameLength	I
+    //   203: getfield 302	com/tencent/commonsdk/soload/MyZipEntry:nameLength	I
     //   206: i2l
     //   207: ladd
     //   208: invokevirtual 109	java/io/RandomAccessFile:seek	(J)V
     //   211: aload_2
-    //   212: getfield 235	com/tencent/commonsdk/soload/MyZipEntry:mLocContentSize	J
-    //   215: ldc2_w 293
+    //   212: getfield 240	com/tencent/commonsdk/soload/MyZipEntry:mLocContentSize	J
+    //   215: ldc2_w 298
     //   218: lsub
     //   219: aload_2
-    //   220: getfield 297	com/tencent/commonsdk/soload/MyZipEntry:nameLength	I
+    //   220: getfield 302	com/tencent/commonsdk/soload/MyZipEntry:nameLength	I
     //   223: i2l
     //   224: lsub
     //   225: lstore 8
     //   227: lconst_0
     //   228: lstore 6
-    //   230: ldc2_w 298
+    //   230: ldc2_w 303
     //   233: lload 6
     //   235: ladd
     //   236: lload 8
@@ -385,7 +396,7 @@ public class DexReleasor
     //   242: aload_0
     //   243: getfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
     //   246: getstatic 46	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
-    //   249: invokevirtual 302	java/io/RandomAccessFile:read	([B)I
+    //   249: invokevirtual 307	java/io/RandomAccessFile:read	([B)I
     //   252: istore_3
     //   253: iload_3
     //   254: iconst_m1
@@ -412,130 +423,130 @@ public class DexReleasor
     //   293: getstatic 46	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
     //   296: iconst_0
     //   297: iload_3
-    //   298: invokevirtual 278	java/io/BufferedOutputStream:write	([BII)V
-    //   301: new 304	java/io/ByteArrayOutputStream
+    //   298: invokevirtual 283	java/io/BufferedOutputStream:write	([BII)V
+    //   301: new 309	java/io/ByteArrayOutputStream
     //   304: dup
-    //   305: invokespecial 305	java/io/ByteArrayOutputStream:<init>	()V
+    //   305: invokespecial 310	java/io/ByteArrayOutputStream:<init>	()V
     //   308: astore 13
     //   310: aload_0
     //   311: aload 13
-    //   313: ldc2_w 306
-    //   316: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   313: ldc2_w 311
+    //   316: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   319: pop2
     //   320: aload_0
     //   321: aload 13
     //   323: aload_2
-    //   324: getfield 312	com/tencent/commonsdk/soload/MyZipEntry:version	I
-    //   327: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   324: getfield 317	com/tencent/commonsdk/soload/MyZipEntry:version	I
+    //   327: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   330: pop
     //   331: aload_0
     //   332: aload 13
     //   334: aload_2
-    //   335: getfield 315	com/tencent/commonsdk/soload/MyZipEntry:versionMinimum	I
-    //   338: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   335: getfield 320	com/tencent/commonsdk/soload/MyZipEntry:versionMinimum	I
+    //   338: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   341: pop
     //   342: aload_0
     //   343: aload 13
     //   345: aload_2
-    //   346: getfield 318	com/tencent/commonsdk/soload/MyZipEntry:flags	I
-    //   349: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   346: getfield 323	com/tencent/commonsdk/soload/MyZipEntry:flags	I
+    //   349: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   352: pop
     //   353: aload_0
     //   354: aload 13
     //   356: aload_2
-    //   357: getfield 321	com/tencent/commonsdk/soload/MyZipEntry:compressionMethod	I
-    //   360: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   357: getfield 326	com/tencent/commonsdk/soload/MyZipEntry:compressionMethod	I
+    //   360: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   363: pop
     //   364: aload_0
     //   365: aload 13
     //   367: aload_2
-    //   368: getfield 324	com/tencent/commonsdk/soload/MyZipEntry:time	I
-    //   371: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   368: getfield 329	com/tencent/commonsdk/soload/MyZipEntry:time	I
+    //   371: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   374: pop
     //   375: aload_0
     //   376: aload 13
     //   378: aload_2
-    //   379: getfield 327	com/tencent/commonsdk/soload/MyZipEntry:modDate	I
-    //   382: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   379: getfield 332	com/tencent/commonsdk/soload/MyZipEntry:modDate	I
+    //   382: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   385: pop
     //   386: aload_0
     //   387: aload 13
     //   389: aload_2
-    //   390: getfield 330	com/tencent/commonsdk/soload/MyZipEntry:crc	J
-    //   393: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   390: getfield 335	com/tencent/commonsdk/soload/MyZipEntry:crc	J
+    //   393: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   396: pop2
     //   397: aload_0
     //   398: aload 13
     //   400: aload_2
-    //   401: getfield 232	com/tencent/commonsdk/soload/MyZipEntry:compressedSize	J
-    //   404: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   401: getfield 237	com/tencent/commonsdk/soload/MyZipEntry:compressedSize	J
+    //   404: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   407: pop2
     //   408: aload_0
     //   409: aload 13
     //   411: aload_2
-    //   412: getfield 333	com/tencent/commonsdk/soload/MyZipEntry:size	J
-    //   415: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   412: getfield 338	com/tencent/commonsdk/soload/MyZipEntry:size	J
+    //   415: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   418: pop2
     //   419: aload_0
     //   420: aload 13
     //   422: iload 4
-    //   424: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   424: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   427: pop
     //   428: aload_0
     //   429: aload 13
     //   431: aload_2
-    //   432: getfield 290	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
-    //   435: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   432: getfield 295	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
+    //   435: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   438: pop
     //   439: aload_0
     //   440: aload 13
     //   442: aload_2
-    //   443: getfield 336	com/tencent/commonsdk/soload/MyZipEntry:commentLength	I
-    //   446: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   443: getfield 341	com/tencent/commonsdk/soload/MyZipEntry:commentLength	I
+    //   446: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   449: pop
     //   450: aload_0
     //   451: aload 13
     //   453: aload_2
-    //   454: getfield 339	com/tencent/commonsdk/soload/MyZipEntry:diskNumbers	I
-    //   457: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   454: getfield 344	com/tencent/commonsdk/soload/MyZipEntry:diskNumbers	I
+    //   457: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   460: pop
     //   461: aload_0
     //   462: aload 13
     //   464: aload_2
-    //   465: getfield 342	com/tencent/commonsdk/soload/MyZipEntry:internalFileAttri	I
-    //   468: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   465: getfield 347	com/tencent/commonsdk/soload/MyZipEntry:internalFileAttri	I
+    //   468: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   471: pop
     //   472: aload_0
     //   473: aload 13
     //   475: aload_2
-    //   476: getfield 345	com/tencent/commonsdk/soload/MyZipEntry:externalFileAttri	J
-    //   479: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   476: getfield 350	com/tencent/commonsdk/soload/MyZipEntry:externalFileAttri	J
+    //   479: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   482: pop2
     //   483: aload_0
     //   484: aload 13
     //   486: lconst_0
-    //   487: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   487: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   490: pop2
     //   491: aload 13
     //   493: aload 12
-    //   495: invokevirtual 346	java/io/ByteArrayOutputStream:write	([B)V
+    //   495: invokevirtual 351	java/io/ByteArrayOutputStream:write	([B)V
     //   498: aload_2
-    //   499: getfield 290	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
+    //   499: getfield 295	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
     //   502: ifle +12 -> 514
     //   505: aload 13
     //   507: aload_2
-    //   508: getfield 349	com/tencent/commonsdk/soload/MyZipEntry:extra	[B
-    //   511: invokevirtual 346	java/io/ByteArrayOutputStream:write	([B)V
+    //   508: getfield 354	com/tencent/commonsdk/soload/MyZipEntry:extra	[B
+    //   511: invokevirtual 351	java/io/ByteArrayOutputStream:write	([B)V
     //   514: aload_2
-    //   515: getfield 336	com/tencent/commonsdk/soload/MyZipEntry:commentLength	I
+    //   515: getfield 341	com/tencent/commonsdk/soload/MyZipEntry:commentLength	I
     //   518: ifle +15 -> 533
     //   521: aload 13
     //   523: aload_2
-    //   524: getfield 352	com/tencent/commonsdk/soload/MyZipEntry:comment	Ljava/lang/String;
-    //   527: invokevirtual 355	java/lang/String:getBytes	()[B
-    //   530: invokevirtual 346	java/io/ByteArrayOutputStream:write	([B)V
+    //   524: getfield 357	com/tencent/commonsdk/soload/MyZipEntry:comment	Ljava/lang/String;
+    //   527: invokevirtual 360	java/lang/String:getBytes	()[B
+    //   530: invokevirtual 351	java/io/ByteArrayOutputStream:write	([B)V
     //   533: aload_2
-    //   534: getfield 229	com/tencent/commonsdk/soload/MyZipEntry:hasDD	Z
+    //   534: getfield 234	com/tencent/commonsdk/soload/MyZipEntry:hasDD	Z
     //   537: ifeq +218 -> 755
     //   540: bipush 16
     //   542: istore_3
@@ -545,53 +556,53 @@ public class DexReleasor
     //   547: iload 4
     //   549: iadd
     //   550: aload_2
-    //   551: getfield 290	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
+    //   551: getfield 295	com/tencent/commonsdk/soload/MyZipEntry:extraLength	I
     //   554: iadd
     //   555: i2l
     //   556: lstore 6
     //   558: aload_2
-    //   559: getfield 232	com/tencent/commonsdk/soload/MyZipEntry:compressedSize	J
+    //   559: getfield 237	com/tencent/commonsdk/soload/MyZipEntry:compressedSize	J
     //   562: lstore 8
     //   564: aload 13
-    //   566: invokevirtual 357	java/io/ByteArrayOutputStream:size	()I
+    //   566: invokevirtual 362	java/io/ByteArrayOutputStream:size	()I
     //   569: istore_3
     //   570: aload_0
     //   571: aload 13
-    //   573: ldc2_w 358
-    //   576: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   573: ldc2_w 363
+    //   576: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   579: pop2
     //   580: aload_0
     //   581: aload 13
     //   583: iconst_0
-    //   584: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   584: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   587: pop
     //   588: aload_0
     //   589: aload 13
     //   591: iconst_0
-    //   592: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   592: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   595: pop
     //   596: aload_0
     //   597: aload 13
     //   599: iconst_1
-    //   600: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   600: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   603: pop
     //   604: aload_0
     //   605: aload 13
     //   607: iconst_1
-    //   608: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   608: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   611: pop
     //   612: aload_0
     //   613: aload 13
     //   615: iload_3
     //   616: i2l
-    //   617: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   617: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   620: pop2
     //   621: aload_0
     //   622: aload 13
     //   624: lload 6
     //   626: lload 8
     //   628: ladd
-    //   629: invokespecial 309	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
+    //   629: invokespecial 314	com/tencent/commonsdk/soload/DexReleasor:writeLong	(Ljava/io/OutputStream;J)J
     //   632: pop2
     //   633: aload_0
     //   634: getfield 57	com/tencent/commonsdk/soload/DexReleasor:commentOfEOCD	[B
@@ -601,31 +612,31 @@ public class DexReleasor
     //   643: aload_0
     //   644: getfield 57	com/tencent/commonsdk/soload/DexReleasor:commentOfEOCD	[B
     //   647: arraylength
-    //   648: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   648: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   651: pop
     //   652: aload 13
     //   654: aload_0
     //   655: getfield 57	com/tencent/commonsdk/soload/DexReleasor:commentOfEOCD	[B
-    //   658: invokevirtual 346	java/io/ByteArrayOutputStream:write	([B)V
+    //   658: invokevirtual 351	java/io/ByteArrayOutputStream:write	([B)V
     //   661: aload 13
     //   663: aload 11
-    //   665: invokevirtual 362	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   665: invokevirtual 367	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   668: aload 11
     //   670: ifnull +13 -> 683
     //   673: aload 11
-    //   675: invokevirtual 365	java/io/BufferedOutputStream:flush	()V
+    //   675: invokevirtual 370	java/io/BufferedOutputStream:flush	()V
     //   678: aload 11
-    //   680: invokevirtual 274	java/io/BufferedOutputStream:close	()V
+    //   680: invokevirtual 279	java/io/BufferedOutputStream:close	()V
     //   683: aload 10
     //   685: ifnull +62 -> 747
     //   688: aload 10
-    //   690: invokevirtual 366	java/io/FileOutputStream:flush	()V
+    //   690: invokevirtual 371	java/io/FileOutputStream:flush	()V
     //   693: aload 10
-    //   695: invokevirtual 275	java/io/FileOutputStream:close	()V
+    //   695: invokevirtual 280	java/io/FileOutputStream:close	()V
     //   698: goto +49 -> 747
     //   701: aload 11
     //   703: getstatic 46	com/tencent/commonsdk/soload/DexReleasor:buffer	[B
-    //   706: invokevirtual 292	java/io/BufferedOutputStream:write	([B)V
+    //   706: invokevirtual 297	java/io/BufferedOutputStream:write	([B)V
     //   709: lload 6
     //   711: iload_3
     //   712: i2l
@@ -635,7 +646,7 @@ public class DexReleasor
     //   719: aload_0
     //   720: aload 13
     //   722: iconst_0
-    //   723: invokespecial 286	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
+    //   723: invokespecial 291	com/tencent/commonsdk/soload/DexReleasor:writeShort	(Ljava/io/OutputStream;I)I
     //   726: pop
     //   727: goto -66 -> 661
     //   730: astore_1
@@ -702,7 +713,7 @@ public class DexReleasor
     //   4: ifnull +15 -> 19
     //   7: aload_0
     //   8: getfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
-    //   11: invokevirtual 368	java/io/RandomAccessFile:close	()V
+    //   11: invokevirtual 373	java/io/RandomAccessFile:close	()V
     //   14: aload_0
     //   15: aconst_null
     //   16: putfield 55	com/tencent/commonsdk/soload/DexReleasor:mRaf	Ljava/io/RandomAccessFile;
@@ -742,7 +753,7 @@ public class DexReleasor
     //   2: aload_0
     //   3: aload_1
     //   4: aload_2
-    //   5: invokespecial 371	com/tencent/commonsdk/soload/DexReleasor:writeToJar	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   5: invokespecial 376	com/tencent/commonsdk/soload/DexReleasor:writeToJar	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   8: astore_3
     //   9: aload_3
     //   10: astore_1
@@ -750,10 +761,10 @@ public class DexReleasor
     //   14: iconst_1
     //   15: aaload
     //   16: aload_2
-    //   17: invokevirtual 183	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   20: ifeq +9 -> 29
     //   23: aload_0
-    //   24: invokevirtual 373	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   24: invokevirtual 378	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
     //   27: aload_3
     //   28: astore_1
     //   29: aload_0
@@ -771,10 +782,10 @@ public class DexReleasor
     //   45: iconst_1
     //   46: aaload
     //   47: aload_2
-    //   48: invokevirtual 183	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   48: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   51: ifeq -22 -> 29
     //   54: aload_0
-    //   55: invokevirtual 373	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   55: invokevirtual 378	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
     //   58: aload_3
     //   59: astore_1
     //   60: goto -31 -> 29
@@ -788,10 +799,10 @@ public class DexReleasor
     //   72: iconst_1
     //   73: aaload
     //   74: aload_2
-    //   75: invokevirtual 183	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   75: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   78: ifeq +7 -> 85
     //   81: aload_0
-    //   82: invokevirtual 373	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
+    //   82: invokevirtual 378	com/tencent/commonsdk/soload/DexReleasor:destroy	()V
     //   85: aload_1
     //   86: athrow
     // Local variable table:

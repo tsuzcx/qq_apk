@@ -77,7 +77,7 @@ public class PluginUtils
     //   77: astore 4
     //   79: aload 10
     //   81: invokeinterface 91 1 0
-    //   86: ifeq +236 -> 322
+    //   86: ifeq +254 -> 340
     //   89: aload_1
     //   90: astore 4
     //   92: aload 10
@@ -85,485 +85,503 @@ public class PluginUtils
     //   99: checkcast 97	java/util/zip/ZipEntry
     //   102: invokevirtual 100	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   105: astore 5
-    //   107: aload_1
-    //   108: astore 4
-    //   110: aload 5
-    //   112: getstatic 59	java/io/File:separator	Ljava/lang/String;
-    //   115: invokevirtual 65	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   118: ifne -42 -> 76
-    //   121: aload_1
-    //   122: astore 4
-    //   124: new 56	java/io/File
-    //   127: dup
-    //   128: new 67	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   135: aload 8
-    //   137: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload 5
-    //   142: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
-    //   151: astore 7
-    //   153: aload_1
-    //   154: astore 5
-    //   156: aload 5
-    //   158: astore_1
-    //   159: aload 7
-    //   161: ifnull -85 -> 76
-    //   164: aload 5
-    //   166: astore 4
-    //   168: aload 7
-    //   170: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   173: getstatic 107	android/os/Build:CPU_ABI	Ljava/lang/String;
-    //   176: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   179: ifeq +14 -> 193
+    //   107: aload 5
+    //   109: ifnull -33 -> 76
+    //   112: aload_1
+    //   113: astore 4
+    //   115: aload 5
+    //   117: ldc 102
+    //   119: invokevirtual 106	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   122: ifne -46 -> 76
+    //   125: aload_1
+    //   126: astore 4
+    //   128: aload 5
+    //   130: getstatic 59	java/io/File:separator	Ljava/lang/String;
+    //   133: invokevirtual 65	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   136: ifne -60 -> 76
+    //   139: aload_1
+    //   140: astore 4
+    //   142: new 56	java/io/File
+    //   145: dup
+    //   146: new 67	java/lang/StringBuilder
+    //   149: dup
+    //   150: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   153: aload 8
+    //   155: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: aload 5
+    //   160: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   166: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+    //   169: astore 7
+    //   171: aload_1
+    //   172: astore 5
+    //   174: aload 5
+    //   176: astore_1
+    //   177: aload 7
+    //   179: ifnull -103 -> 76
     //   182: aload 5
     //   184: astore 4
-    //   186: getstatic 107	android/os/Build:CPU_ABI	Ljava/lang/String;
-    //   189: astore_1
-    //   190: goto -114 -> 76
-    //   193: aload 5
-    //   195: astore 4
-    //   197: getstatic 116	android/os/Build$VERSION:SDK_INT	I
-    //   200: bipush 7
-    //   202: if_icmple +38 -> 240
-    //   205: aload 5
-    //   207: astore 4
-    //   209: aload 7
-    //   211: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   214: getstatic 119	android/os/Build:CPU_ABI2	Ljava/lang/String;
-    //   217: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   220: ifeq +20 -> 240
+    //   186: aload 7
+    //   188: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   191: getstatic 113	android/os/Build:CPU_ABI	Ljava/lang/String;
+    //   194: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   197: ifeq +14 -> 211
+    //   200: aload 5
+    //   202: astore 4
+    //   204: getstatic 113	android/os/Build:CPU_ABI	Ljava/lang/String;
+    //   207: astore_1
+    //   208: goto -132 -> 76
+    //   211: aload 5
+    //   213: astore 4
+    //   215: getstatic 122	android/os/Build$VERSION:SDK_INT	I
+    //   218: bipush 7
+    //   220: if_icmple +38 -> 258
     //   223: aload 5
-    //   225: ifnonnull +15 -> 240
-    //   228: aload 5
-    //   230: astore 4
-    //   232: getstatic 119	android/os/Build:CPU_ABI2	Ljava/lang/String;
-    //   235: astore 5
-    //   237: goto -81 -> 156
-    //   240: aload 5
-    //   242: astore 4
-    //   244: getstatic 107	android/os/Build:CPU_ABI	Ljava/lang/String;
-    //   247: ldc 121
-    //   249: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   252: ifeq +56 -> 308
-    //   255: aload 5
-    //   257: ifnonnull +51 -> 308
-    //   260: aload 5
-    //   262: astore 4
-    //   264: aload 7
-    //   266: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   269: ldc 123
-    //   271: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   274: ifne +20 -> 294
-    //   277: aload 5
-    //   279: astore 4
-    //   281: aload 7
-    //   283: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   286: ldc 125
-    //   288: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   291: ifeq +17 -> 308
-    //   294: aload 5
-    //   296: astore 4
-    //   298: aload 7
-    //   300: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   303: astore 5
-    //   305: goto -149 -> 156
-    //   308: aload 5
-    //   310: astore 4
-    //   312: aload 7
-    //   314: invokevirtual 129	java/io/File:getParentFile	()Ljava/io/File;
-    //   317: astore 7
-    //   319: goto -163 -> 156
-    //   322: aload 6
-    //   324: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   327: aload 9
-    //   329: astore 4
-    //   331: aload_1
-    //   332: astore 9
-    //   334: aconst_null
-    //   335: astore 6
-    //   337: aconst_null
-    //   338: astore 10
-    //   340: aconst_null
-    //   341: astore 7
-    //   343: aload 4
-    //   345: astore 5
-    //   347: aload 7
-    //   349: astore_1
-    //   350: aload 4
-    //   352: ifnonnull +341 -> 693
-    //   355: aload 4
-    //   357: astore 5
-    //   359: aload 7
-    //   361: astore_1
-    //   362: aload 9
-    //   364: ifnull +329 -> 693
-    //   367: aload 10
-    //   369: astore_1
-    //   370: new 78	java/util/zip/ZipFile
-    //   373: dup
-    //   374: aload_0
-    //   375: invokespecial 81	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   378: astore_0
-    //   379: sipush 4096
-    //   382: newarray byte
-    //   384: astore 12
-    //   386: aload_0
-    //   387: invokevirtual 85	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
-    //   390: astore 13
-    //   392: aload 4
-    //   394: astore 5
-    //   396: aload 13
-    //   398: invokeinterface 91 1 0
-    //   403: ifeq +476 -> 879
-    //   406: aload 13
-    //   408: invokeinterface 95 1 0
-    //   413: checkcast 97	java/util/zip/ZipEntry
-    //   416: astore 14
-    //   418: aload 14
-    //   420: invokevirtual 100	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   423: astore 6
-    //   425: aload 6
-    //   427: getstatic 59	java/io/File:separator	Ljava/lang/String;
-    //   430: invokevirtual 65	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   433: ifne -37 -> 396
-    //   436: new 56	java/io/File
-    //   439: dup
-    //   440: new 67	java/lang/StringBuilder
-    //   443: dup
-    //   444: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   447: aload 8
-    //   449: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   452: aload 6
-    //   454: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   460: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
-    //   463: astore 4
-    //   465: aload 6
-    //   467: getstatic 59	java/io/File:separator	Ljava/lang/String;
-    //   470: invokevirtual 139	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   473: istore_2
-    //   474: aload 6
-    //   476: astore_1
-    //   477: iload_2
-    //   478: iconst_m1
-    //   479: if_icmpeq +12 -> 491
-    //   482: aload 6
-    //   484: iload_2
-    //   485: iconst_1
-    //   486: iadd
-    //   487: invokevirtual 143	java/lang/String:substring	(I)Ljava/lang/String;
-    //   490: astore_1
-    //   491: new 56	java/io/File
-    //   494: dup
-    //   495: new 67	java/lang/StringBuilder
-    //   498: dup
-    //   499: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   502: aload 8
-    //   504: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   507: aload_1
-    //   508: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
-    //   517: astore 15
-    //   519: iconst_0
-    //   520: istore_3
-    //   521: aload 4
+    //   225: astore 4
+    //   227: aload 7
+    //   229: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   232: getstatic 125	android/os/Build:CPU_ABI2	Ljava/lang/String;
+    //   235: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   238: ifeq +20 -> 258
+    //   241: aload 5
+    //   243: ifnonnull +15 -> 258
+    //   246: aload 5
+    //   248: astore 4
+    //   250: getstatic 125	android/os/Build:CPU_ABI2	Ljava/lang/String;
+    //   253: astore 5
+    //   255: goto -81 -> 174
+    //   258: aload 5
+    //   260: astore 4
+    //   262: getstatic 113	android/os/Build:CPU_ABI	Ljava/lang/String;
+    //   265: ldc 127
+    //   267: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   270: ifeq +56 -> 326
+    //   273: aload 5
+    //   275: ifnonnull +51 -> 326
+    //   278: aload 5
+    //   280: astore 4
+    //   282: aload 7
+    //   284: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   287: ldc 129
+    //   289: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   292: ifne +20 -> 312
+    //   295: aload 5
+    //   297: astore 4
+    //   299: aload 7
+    //   301: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   304: ldc 131
+    //   306: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   309: ifeq +17 -> 326
+    //   312: aload 5
+    //   314: astore 4
+    //   316: aload 7
+    //   318: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   321: astore 5
+    //   323: goto -149 -> 174
+    //   326: aload 5
+    //   328: astore 4
+    //   330: aload 7
+    //   332: invokevirtual 135	java/io/File:getParentFile	()Ljava/io/File;
+    //   335: astore 7
+    //   337: goto -163 -> 174
+    //   340: aload 6
+    //   342: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   345: aload 9
+    //   347: astore 4
+    //   349: aload_1
+    //   350: astore 9
+    //   352: aconst_null
+    //   353: astore 6
+    //   355: aconst_null
+    //   356: astore 10
+    //   358: aconst_null
+    //   359: astore 7
+    //   361: aload 4
+    //   363: astore 5
+    //   365: aload 7
+    //   367: astore_1
+    //   368: aload 4
+    //   370: ifnonnull +356 -> 726
+    //   373: aload 4
+    //   375: astore 5
+    //   377: aload 7
+    //   379: astore_1
+    //   380: aload 9
+    //   382: ifnull +344 -> 726
+    //   385: aload 10
+    //   387: astore_1
+    //   388: new 78	java/util/zip/ZipFile
+    //   391: dup
+    //   392: aload_0
+    //   393: invokespecial 81	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   396: astore_0
+    //   397: sipush 4096
+    //   400: newarray byte
+    //   402: astore 12
+    //   404: aload_0
+    //   405: invokevirtual 85	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   408: astore 13
+    //   410: aload 4
+    //   412: astore 5
+    //   414: aload 13
+    //   416: invokeinterface 91 1 0
+    //   421: ifeq +491 -> 912
+    //   424: aload 13
+    //   426: invokeinterface 95 1 0
+    //   431: checkcast 97	java/util/zip/ZipEntry
+    //   434: astore 14
+    //   436: aload 14
+    //   438: invokevirtual 100	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   441: astore 6
+    //   443: aload 6
+    //   445: ifnull -31 -> 414
+    //   448: aload 6
+    //   450: ldc 102
+    //   452: invokevirtual 106	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   455: ifne -41 -> 414
+    //   458: aload 6
+    //   460: getstatic 59	java/io/File:separator	Ljava/lang/String;
+    //   463: invokevirtual 65	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   466: ifne -52 -> 414
+    //   469: new 56	java/io/File
+    //   472: dup
+    //   473: new 67	java/lang/StringBuilder
+    //   476: dup
+    //   477: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   480: aload 8
+    //   482: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   485: aload 6
+    //   487: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   490: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   493: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+    //   496: astore 4
+    //   498: aload 6
+    //   500: getstatic 59	java/io/File:separator	Ljava/lang/String;
+    //   503: invokevirtual 145	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   506: istore_2
+    //   507: aload 6
+    //   509: astore_1
+    //   510: iload_2
+    //   511: iconst_m1
+    //   512: if_icmpeq +12 -> 524
+    //   515: aload 6
+    //   517: iload_2
+    //   518: iconst_1
+    //   519: iadd
+    //   520: invokevirtual 149	java/lang/String:substring	(I)Ljava/lang/String;
     //   523: astore_1
-    //   524: iload_3
-    //   525: istore_2
-    //   526: aload_1
-    //   527: ifnull +17 -> 544
-    //   530: aload_1
-    //   531: invokevirtual 102	java/io/File:getName	()Ljava/lang/String;
-    //   534: aload 9
-    //   536: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   539: ifeq +210 -> 749
-    //   542: iconst_1
-    //   543: istore_2
-    //   544: iload_2
-    //   545: ifeq -149 -> 396
-    //   548: aload 15
-    //   550: invokevirtual 129	java/io/File:getParentFile	()Ljava/io/File;
-    //   553: invokevirtual 146	java/io/File:mkdirs	()Z
-    //   556: pop
-    //   557: aconst_null
-    //   558: astore 10
-    //   560: aconst_null
-    //   561: astore 11
-    //   563: aconst_null
-    //   564: astore_1
-    //   565: aconst_null
-    //   566: astore 7
-    //   568: aload 10
-    //   570: astore 6
-    //   572: aload_0
-    //   573: aload 14
-    //   575: invokevirtual 150	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   578: astore 4
-    //   580: aload 4
-    //   582: astore 7
-    //   584: aload 10
-    //   586: astore 6
-    //   588: aload 4
-    //   590: astore_1
-    //   591: new 152	java/io/FileOutputStream
-    //   594: dup
-    //   595: aload 15
-    //   597: invokespecial 155	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   600: astore 10
-    //   602: aload 4
-    //   604: aload 12
-    //   606: invokevirtual 161	java/io/InputStream:read	([B)I
-    //   609: istore_2
-    //   610: iload_2
-    //   611: ifle +146 -> 757
-    //   614: aload 10
-    //   616: aload 12
-    //   618: iconst_0
-    //   619: iload_2
-    //   620: invokevirtual 165	java/io/FileOutputStream:write	([BII)V
-    //   623: goto -21 -> 602
-    //   626: astore 5
-    //   628: aload 4
-    //   630: astore 7
-    //   632: aload 10
-    //   634: astore 4
-    //   636: aload 4
-    //   638: astore 6
-    //   640: aload 7
-    //   642: astore_1
-    //   643: aload 5
-    //   645: invokevirtual 168	java/io/IOException:printStackTrace	()V
-    //   648: aload 4
-    //   650: astore 6
-    //   652: aload 7
-    //   654: astore_1
-    //   655: aload 5
-    //   657: invokestatic 172	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   660: astore 5
-    //   662: aload 5
-    //   664: astore_1
-    //   665: aload 4
-    //   667: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   670: aload 7
-    //   672: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   675: aload_1
-    //   676: astore 4
-    //   678: aload 4
-    //   680: astore 5
-    //   682: aload 4
-    //   684: ifnull -288 -> 396
-    //   687: aload_0
-    //   688: astore_1
-    //   689: aload 4
-    //   691: astore 5
-    //   693: aload_1
-    //   694: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   697: aload 5
-    //   699: areturn
-    //   700: astore 6
-    //   702: aload 7
-    //   704: astore 5
-    //   706: aload 5
-    //   708: astore_1
-    //   709: aload 6
-    //   711: invokevirtual 168	java/io/IOException:printStackTrace	()V
-    //   714: aload 5
-    //   716: astore_1
-    //   717: aload 6
-    //   719: invokestatic 172	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   722: astore 6
-    //   724: aload 6
-    //   726: astore_1
-    //   727: aload 5
-    //   729: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   732: aload 4
-    //   734: astore 9
-    //   736: aload_1
-    //   737: astore 4
-    //   739: goto -405 -> 334
-    //   742: astore_0
-    //   743: aload_1
-    //   744: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   747: aload_0
-    //   748: athrow
-    //   749: aload_1
-    //   750: invokevirtual 129	java/io/File:getParentFile	()Ljava/io/File;
-    //   753: astore_1
-    //   754: goto -230 -> 524
-    //   757: aload 10
-    //   759: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   762: aload 4
-    //   764: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   767: aload 5
-    //   769: astore 4
-    //   771: goto -93 -> 678
-    //   774: aload 6
-    //   776: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   779: aload_1
-    //   780: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
-    //   783: aload 4
-    //   785: athrow
-    //   786: astore 4
-    //   788: aload_0
-    //   789: astore_1
-    //   790: aload 4
-    //   792: invokevirtual 168	java/io/IOException:printStackTrace	()V
-    //   795: aload_0
-    //   796: astore_1
-    //   797: aload 4
-    //   799: invokestatic 172	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   524: new 56	java/io/File
+    //   527: dup
+    //   528: new 67	java/lang/StringBuilder
+    //   531: dup
+    //   532: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   535: aload 8
+    //   537: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   540: aload_1
+    //   541: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   544: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   547: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+    //   550: astore 15
+    //   552: iconst_0
+    //   553: istore_3
+    //   554: aload 4
+    //   556: astore_1
+    //   557: iload_3
+    //   558: istore_2
+    //   559: aload_1
+    //   560: ifnull +17 -> 577
+    //   563: aload_1
+    //   564: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   567: aload 9
+    //   569: invokevirtual 117	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   572: ifeq +210 -> 782
+    //   575: iconst_1
+    //   576: istore_2
+    //   577: iload_2
+    //   578: ifeq -164 -> 414
+    //   581: aload 15
+    //   583: invokevirtual 135	java/io/File:getParentFile	()Ljava/io/File;
+    //   586: invokevirtual 152	java/io/File:mkdirs	()Z
+    //   589: pop
+    //   590: aconst_null
+    //   591: astore 10
+    //   593: aconst_null
+    //   594: astore 11
+    //   596: aconst_null
+    //   597: astore_1
+    //   598: aconst_null
+    //   599: astore 7
+    //   601: aload 10
+    //   603: astore 6
+    //   605: aload_0
+    //   606: aload 14
+    //   608: invokevirtual 156	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   611: astore 4
+    //   613: aload 4
+    //   615: astore 7
+    //   617: aload 10
+    //   619: astore 6
+    //   621: aload 4
+    //   623: astore_1
+    //   624: new 158	java/io/FileOutputStream
+    //   627: dup
+    //   628: aload 15
+    //   630: invokespecial 161	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   633: astore 10
+    //   635: aload 4
+    //   637: aload 12
+    //   639: invokevirtual 167	java/io/InputStream:read	([B)I
+    //   642: istore_2
+    //   643: iload_2
+    //   644: ifle +146 -> 790
+    //   647: aload 10
+    //   649: aload 12
+    //   651: iconst_0
+    //   652: iload_2
+    //   653: invokevirtual 171	java/io/FileOutputStream:write	([BII)V
+    //   656: goto -21 -> 635
+    //   659: astore 5
+    //   661: aload 4
+    //   663: astore 7
+    //   665: aload 10
+    //   667: astore 4
+    //   669: aload 4
+    //   671: astore 6
+    //   673: aload 7
+    //   675: astore_1
+    //   676: aload 5
+    //   678: invokevirtual 174	java/io/IOException:printStackTrace	()V
+    //   681: aload 4
+    //   683: astore 6
+    //   685: aload 7
+    //   687: astore_1
+    //   688: aload 5
+    //   690: invokestatic 178	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   693: astore 5
+    //   695: aload 5
+    //   697: astore_1
+    //   698: aload 4
+    //   700: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   703: aload 7
+    //   705: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   708: aload_1
+    //   709: astore 4
+    //   711: aload 4
+    //   713: astore 5
+    //   715: aload 4
+    //   717: ifnull -303 -> 414
+    //   720: aload_0
+    //   721: astore_1
+    //   722: aload 4
+    //   724: astore 5
+    //   726: aload_1
+    //   727: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   730: aload 5
+    //   732: areturn
+    //   733: astore 6
+    //   735: aload 7
+    //   737: astore 5
+    //   739: aload 5
+    //   741: astore_1
+    //   742: aload 6
+    //   744: invokevirtual 174	java/io/IOException:printStackTrace	()V
+    //   747: aload 5
+    //   749: astore_1
+    //   750: aload 6
+    //   752: invokestatic 178	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   755: astore 6
+    //   757: aload 6
+    //   759: astore_1
+    //   760: aload 5
+    //   762: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   765: aload 4
+    //   767: astore 9
+    //   769: aload_1
+    //   770: astore 4
+    //   772: goto -420 -> 352
+    //   775: astore_0
+    //   776: aload_1
+    //   777: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   780: aload_0
+    //   781: athrow
+    //   782: aload_1
+    //   783: invokevirtual 135	java/io/File:getParentFile	()Ljava/io/File;
+    //   786: astore_1
+    //   787: goto -230 -> 557
+    //   790: aload 10
+    //   792: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   795: aload 4
+    //   797: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   800: aload 5
     //   802: astore 4
-    //   804: aload_0
-    //   805: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   808: aload 4
-    //   810: areturn
-    //   811: astore_0
+    //   804: goto -93 -> 711
+    //   807: aload 6
+    //   809: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   812: aload_1
-    //   813: invokestatic 135	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
-    //   816: aload_0
-    //   817: athrow
-    //   818: astore 4
-    //   820: aload_0
-    //   821: astore_1
-    //   822: aload 4
-    //   824: astore_0
-    //   825: goto -13 -> 812
-    //   828: astore 4
-    //   830: aload 6
-    //   832: astore_0
-    //   833: goto -45 -> 788
-    //   836: astore 5
-    //   838: aload 10
-    //   840: astore 6
-    //   842: aload 4
-    //   844: astore_1
-    //   845: aload 5
-    //   847: astore 4
-    //   849: goto -75 -> 774
-    //   852: astore 5
-    //   854: aload 11
-    //   856: astore 4
-    //   858: goto -222 -> 636
-    //   861: astore_0
-    //   862: aload 6
-    //   864: astore_1
-    //   865: goto -122 -> 743
-    //   868: astore_1
-    //   869: aload 6
-    //   871: astore 5
-    //   873: aload_1
-    //   874: astore 6
-    //   876: goto -170 -> 706
-    //   879: aload_0
-    //   880: astore_1
-    //   881: goto -188 -> 693
-    //   884: astore 4
-    //   886: goto -112 -> 774
+    //   813: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   816: aload 4
+    //   818: athrow
+    //   819: astore 4
+    //   821: aload_0
+    //   822: astore_1
+    //   823: aload 4
+    //   825: invokevirtual 174	java/io/IOException:printStackTrace	()V
+    //   828: aload_0
+    //   829: astore_1
+    //   830: aload 4
+    //   832: invokestatic 178	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   835: astore 4
+    //   837: aload_0
+    //   838: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   841: aload 4
+    //   843: areturn
+    //   844: astore_0
+    //   845: aload_1
+    //   846: invokestatic 141	com/tencent/mobileqq/pluginsdk/IOUtil:closeZipFile	(Ljava/util/zip/ZipFile;)V
+    //   849: aload_0
+    //   850: athrow
+    //   851: astore 4
+    //   853: aload_0
+    //   854: astore_1
+    //   855: aload 4
+    //   857: astore_0
+    //   858: goto -13 -> 845
+    //   861: astore 4
+    //   863: aload 6
+    //   865: astore_0
+    //   866: goto -45 -> 821
+    //   869: astore 5
+    //   871: aload 10
+    //   873: astore 6
+    //   875: aload 4
+    //   877: astore_1
+    //   878: aload 5
+    //   880: astore 4
+    //   882: goto -75 -> 807
+    //   885: astore 5
+    //   887: aload 11
+    //   889: astore 4
+    //   891: goto -222 -> 669
+    //   894: astore_0
+    //   895: aload 6
+    //   897: astore_1
+    //   898: goto -122 -> 776
+    //   901: astore_1
+    //   902: aload 6
+    //   904: astore 5
+    //   906: aload_1
+    //   907: astore 6
+    //   909: goto -170 -> 739
+    //   912: aload_0
+    //   913: astore_1
+    //   914: goto -188 -> 726
+    //   917: astore 4
+    //   919: goto -112 -> 807
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	889	0	paramString1	String
-    //   0	889	1	paramString2	String
-    //   473	147	2	i	int
-    //   520	5	3	j	int
-    //   44	740	4	localObject1	Object
-    //   786	12	4	localIOException1	IOException
-    //   802	7	4	str1	String
-    //   818	5	4	localObject2	Object
-    //   828	15	4	localIOException2	IOException
-    //   847	10	4	localObject3	Object
-    //   884	1	4	localObject4	Object
-    //   50	345	5	localObject5	Object
-    //   626	30	5	localIOException3	IOException
-    //   660	108	5	localObject6	Object
-    //   836	10	5	localObject7	Object
-    //   852	1	5	localIOException4	IOException
-    //   871	1	5	localObject8	Object
-    //   60	591	6	localObject9	Object
-    //   700	18	6	localIOException5	IOException
-    //   722	153	6	localObject10	Object
-    //   41	662	7	localObject11	Object
-    //   1	502	8	str2	String
-    //   36	699	9	localObject12	Object
-    //   47	792	10	localObject13	Object
-    //   561	294	11	localObject14	Object
-    //   384	233	12	arrayOfByte	byte[]
-    //   390	17	13	localEnumeration	java.util.Enumeration
-    //   416	158	14	localZipEntry	java.util.zip.ZipEntry
-    //   517	79	15	localFile	File
+    //   0	922	0	paramString1	String
+    //   0	922	1	paramString2	String
+    //   506	147	2	i	int
+    //   553	5	3	j	int
+    //   44	773	4	localObject1	Object
+    //   819	12	4	localIOException1	IOException
+    //   835	7	4	str1	String
+    //   851	5	4	localObject2	Object
+    //   861	15	4	localIOException2	IOException
+    //   880	10	4	localObject3	Object
+    //   917	1	4	localObject4	Object
+    //   50	363	5	localObject5	Object
+    //   659	30	5	localIOException3	IOException
+    //   693	108	5	localObject6	Object
+    //   869	10	5	localObject7	Object
+    //   885	1	5	localIOException4	IOException
+    //   904	1	5	localObject8	Object
+    //   60	624	6	localObject9	Object
+    //   733	18	6	localIOException5	IOException
+    //   755	153	6	localObject10	Object
+    //   41	695	7	localObject11	Object
+    //   1	535	8	str2	String
+    //   36	732	9	localObject12	Object
+    //   47	825	10	localObject13	Object
+    //   594	294	11	localObject14	Object
+    //   402	248	12	arrayOfByte	byte[]
+    //   408	17	13	localEnumeration	java.util.Enumeration
+    //   434	173	14	localZipEntry	java.util.zip.ZipEntry
+    //   550	79	15	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   602	610	626	java/io/IOException
-    //   614	623	626	java/io/IOException
-    //   52	62	700	java/io/IOException
-    //   52	62	742	finally
-    //   709	714	742	finally
-    //   717	724	742	finally
-    //   379	392	786	java/io/IOException
-    //   396	474	786	java/io/IOException
-    //   482	491	786	java/io/IOException
-    //   491	519	786	java/io/IOException
-    //   530	542	786	java/io/IOException
-    //   548	557	786	java/io/IOException
-    //   665	675	786	java/io/IOException
-    //   749	754	786	java/io/IOException
-    //   757	767	786	java/io/IOException
-    //   774	786	786	java/io/IOException
-    //   370	379	811	finally
-    //   790	795	811	finally
-    //   797	804	811	finally
-    //   379	392	818	finally
-    //   396	474	818	finally
-    //   482	491	818	finally
-    //   491	519	818	finally
-    //   530	542	818	finally
-    //   548	557	818	finally
-    //   665	675	818	finally
-    //   749	754	818	finally
-    //   757	767	818	finally
-    //   774	786	818	finally
-    //   370	379	828	java/io/IOException
-    //   602	610	836	finally
-    //   614	623	836	finally
-    //   572	580	852	java/io/IOException
-    //   591	602	852	java/io/IOException
-    //   66	73	861	finally
-    //   79	89	861	finally
-    //   92	107	861	finally
-    //   110	121	861	finally
-    //   124	153	861	finally
-    //   168	182	861	finally
-    //   186	190	861	finally
-    //   197	205	861	finally
-    //   209	223	861	finally
-    //   232	237	861	finally
-    //   244	255	861	finally
-    //   264	277	861	finally
-    //   281	294	861	finally
-    //   298	305	861	finally
-    //   312	319	861	finally
-    //   66	73	868	java/io/IOException
-    //   79	89	868	java/io/IOException
-    //   92	107	868	java/io/IOException
-    //   110	121	868	java/io/IOException
-    //   124	153	868	java/io/IOException
-    //   168	182	868	java/io/IOException
-    //   186	190	868	java/io/IOException
-    //   197	205	868	java/io/IOException
-    //   209	223	868	java/io/IOException
-    //   232	237	868	java/io/IOException
-    //   244	255	868	java/io/IOException
-    //   264	277	868	java/io/IOException
-    //   281	294	868	java/io/IOException
-    //   298	305	868	java/io/IOException
-    //   312	319	868	java/io/IOException
-    //   572	580	884	finally
-    //   591	602	884	finally
-    //   643	648	884	finally
-    //   655	662	884	finally
+    //   635	643	659	java/io/IOException
+    //   647	656	659	java/io/IOException
+    //   52	62	733	java/io/IOException
+    //   52	62	775	finally
+    //   742	747	775	finally
+    //   750	757	775	finally
+    //   397	410	819	java/io/IOException
+    //   414	443	819	java/io/IOException
+    //   448	507	819	java/io/IOException
+    //   515	524	819	java/io/IOException
+    //   524	552	819	java/io/IOException
+    //   563	575	819	java/io/IOException
+    //   581	590	819	java/io/IOException
+    //   698	708	819	java/io/IOException
+    //   782	787	819	java/io/IOException
+    //   790	800	819	java/io/IOException
+    //   807	819	819	java/io/IOException
+    //   388	397	844	finally
+    //   823	828	844	finally
+    //   830	837	844	finally
+    //   397	410	851	finally
+    //   414	443	851	finally
+    //   448	507	851	finally
+    //   515	524	851	finally
+    //   524	552	851	finally
+    //   563	575	851	finally
+    //   581	590	851	finally
+    //   698	708	851	finally
+    //   782	787	851	finally
+    //   790	800	851	finally
+    //   807	819	851	finally
+    //   388	397	861	java/io/IOException
+    //   635	643	869	finally
+    //   647	656	869	finally
+    //   605	613	885	java/io/IOException
+    //   624	635	885	java/io/IOException
+    //   66	73	894	finally
+    //   79	89	894	finally
+    //   92	107	894	finally
+    //   115	125	894	finally
+    //   128	139	894	finally
+    //   142	171	894	finally
+    //   186	200	894	finally
+    //   204	208	894	finally
+    //   215	223	894	finally
+    //   227	241	894	finally
+    //   250	255	894	finally
+    //   262	273	894	finally
+    //   282	295	894	finally
+    //   299	312	894	finally
+    //   316	323	894	finally
+    //   330	337	894	finally
+    //   66	73	901	java/io/IOException
+    //   79	89	901	java/io/IOException
+    //   92	107	901	java/io/IOException
+    //   115	125	901	java/io/IOException
+    //   128	139	901	java/io/IOException
+    //   142	171	901	java/io/IOException
+    //   186	200	901	java/io/IOException
+    //   204	208	901	java/io/IOException
+    //   215	223	901	java/io/IOException
+    //   227	241	901	java/io/IOException
+    //   250	255	901	java/io/IOException
+    //   262	273	901	java/io/IOException
+    //   282	295	901	java/io/IOException
+    //   299	312	901	java/io/IOException
+    //   316	323	901	java/io/IOException
+    //   330	337	901	java/io/IOException
+    //   605	613	917	finally
+    //   624	635	917	finally
+    //   676	681	917	finally
+    //   688	695	917	finally
   }
   
   private static String extractPluginAndGetMd5Code(Context paramContext, String paramString)
@@ -577,18 +595,18 @@ public class PluginUtils
     throws Exception
   {
     // Byte code:
-    //   0: ldc 190
-    //   2: invokestatic 195	com/tencent/mobileqq/pluginsdk/DebugHelper:debug	(Ljava/lang/String;)V
+    //   0: ldc 196
+    //   2: invokestatic 201	com/tencent/mobileqq/pluginsdk/DebugHelper:debug	(Ljava/lang/String;)V
     //   5: aload_1
-    //   6: ldc 197
-    //   8: ldc 199
-    //   10: invokevirtual 202	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   6: ldc 203
+    //   8: ldc 205
+    //   10: invokevirtual 208	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   13: astore 9
     //   15: aload_2
-    //   16: invokevirtual 205	java/io/File:exists	()Z
+    //   16: invokevirtual 211	java/io/File:exists	()Z
     //   19: ifeq +8 -> 27
     //   22: aload_2
-    //   23: invokevirtual 208	java/io/File:delete	()Z
+    //   23: invokevirtual 214	java/io/File:delete	()Z
     //   26: pop
     //   27: new 56	java/io/File
     //   30: dup
@@ -596,20 +614,20 @@ public class PluginUtils
     //   34: dup
     //   35: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   38: aload_2
-    //   39: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   42: ldc 23
     //   44: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
+    //   50: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
     //   53: astore 8
     //   55: aload 8
-    //   57: invokevirtual 205	java/io/File:exists	()Z
+    //   57: invokevirtual 211	java/io/File:exists	()Z
     //   60: ifeq +9 -> 69
     //   63: aload 8
-    //   65: invokevirtual 208	java/io/File:delete	()Z
+    //   65: invokevirtual 214	java/io/File:delete	()Z
     //   68: pop
     //   69: aload 8
-    //   71: invokevirtual 214	java/io/File:createNewFile	()Z
+    //   71: invokevirtual 220	java/io/File:createNewFile	()Z
     //   74: pop
     //   75: aconst_null
     //   76: astore 5
@@ -622,16 +640,16 @@ public class PluginUtils
     //   86: aload 6
     //   88: astore 4
     //   90: aload_0
-    //   91: invokevirtual 220	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   91: invokevirtual 226	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   94: new 67	java/lang/StringBuilder
     //   97: dup
     //   98: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   101: ldc 222
+    //   101: ldc 228
     //   103: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: aload 9
     //   108: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: invokevirtual 228	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   114: invokevirtual 234	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   117: astore_0
     //   118: aload_0
     //   119: astore_1
@@ -639,17 +657,17 @@ public class PluginUtils
     //   122: astore 4
     //   124: aload_0
     //   125: astore 5
-    //   127: new 152	java/io/FileOutputStream
+    //   127: new 158	java/io/FileOutputStream
     //   130: dup
     //   131: aload 8
-    //   133: invokespecial 155	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   133: invokespecial 161	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   136: astore 6
     //   138: sipush 8192
     //   141: newarray byte
     //   143: astore_1
     //   144: aload_0
     //   145: aload_1
-    //   146: invokevirtual 161	java/io/InputStream:read	([B)I
+    //   146: invokevirtual 167	java/io/InputStream:read	([B)I
     //   149: istore_3
     //   150: iload_3
     //   151: iconst_m1
@@ -658,40 +676,40 @@ public class PluginUtils
     //   157: aload_1
     //   158: iconst_0
     //   159: iload_3
-    //   160: invokevirtual 231	java/io/OutputStream:write	([BII)V
+    //   160: invokevirtual 237	java/io/OutputStream:write	([BII)V
     //   163: goto -19 -> 144
     //   166: astore_2
     //   167: aload 6
     //   169: astore 4
     //   171: aload_0
     //   172: astore_1
-    //   173: new 180	java/lang/Exception
+    //   173: new 186	java/lang/Exception
     //   176: dup
-    //   177: ldc 233
+    //   177: ldc 239
     //   179: aload_2
-    //   180: invokespecial 236	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   180: invokespecial 242	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   183: athrow
     //   184: astore_2
     //   185: aload_1
     //   186: astore_0
     //   187: aload_0
-    //   188: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   188: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   191: aload 4
-    //   193: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   193: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   196: aload_2
     //   197: athrow
     //   198: aload 8
     //   200: aload_2
-    //   201: invokevirtual 240	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   201: invokevirtual 246	java/io/File:renameTo	(Ljava/io/File;)Z
     //   204: pop
     //   205: aload_2
-    //   206: invokevirtual 243	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   209: invokestatic 249	com/tencent/mobileqq/pluginsdk/PluginStatic:encodeFile	(Ljava/lang/String;)Ljava/lang/String;
+    //   206: invokevirtual 249	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   209: invokestatic 255	com/tencent/mobileqq/pluginsdk/PluginStatic:encodeFile	(Ljava/lang/String;)Ljava/lang/String;
     //   212: astore_1
     //   213: aload_0
-    //   214: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   214: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   217: aload 6
-    //   219: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   219: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   222: aload_1
     //   223: areturn
     //   224: astore_2
@@ -911,28 +929,28 @@ public class PluginUtils
     //   4: astore_3
     //   5: aconst_null
     //   6: astore 4
-    //   8: new 152	java/io/FileOutputStream
+    //   8: new 158	java/io/FileOutputStream
     //   11: dup
     //   12: new 67	java/lang/StringBuilder
     //   15: dup
     //   16: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   19: aload_0
     //   20: aload_1
-    //   21: invokestatic 184	com/tencent/mobileqq/pluginsdk/PluginUtils:getInstallPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   24: invokevirtual 243	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   21: invokestatic 190	com/tencent/mobileqq/pluginsdk/PluginUtils:getInstallPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
+    //   24: invokevirtual 249	java/io/File:getCanonicalPath	()Ljava/lang/String;
     //   27: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc_w 382
+    //   30: ldc_w 388
     //   33: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokespecial 383	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 389	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   42: astore_0
     //   43: aload_0
     //   44: aload_2
-    //   45: invokestatic 387	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   48: invokevirtual 391	java/lang/String:getBytes	()[B
-    //   51: invokevirtual 394	java/io/FileOutputStream:write	([B)V
+    //   45: invokestatic 393	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   48: invokevirtual 397	java/lang/String:getBytes	()[B
+    //   51: invokevirtual 400	java/io/FileOutputStream:write	([B)V
     //   54: aload_0
-    //   55: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   55: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   58: aconst_null
     //   59: areturn
     //   60: astore_1
@@ -941,14 +959,14 @@ public class PluginUtils
     //   64: aload_0
     //   65: astore_3
     //   66: aload_1
-    //   67: invokevirtual 395	java/io/FileNotFoundException:printStackTrace	()V
+    //   67: invokevirtual 401	java/io/FileNotFoundException:printStackTrace	()V
     //   70: aload_0
     //   71: astore_3
     //   72: aload_1
-    //   73: invokestatic 172	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   73: invokestatic 178	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   76: astore_1
     //   77: aload_0
-    //   78: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   78: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   81: aload_1
     //   82: areturn
     //   83: astore_1
@@ -957,19 +975,19 @@ public class PluginUtils
     //   87: aload_0
     //   88: astore_3
     //   89: aload_1
-    //   90: invokevirtual 168	java/io/IOException:printStackTrace	()V
+    //   90: invokevirtual 174	java/io/IOException:printStackTrace	()V
     //   93: aload_0
     //   94: astore_3
     //   95: aload_1
-    //   96: invokestatic 172	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   96: invokestatic 178	com/tencent/mobileqq/pluginsdk/PluginUtils:getExceptionInfo	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   99: astore_1
     //   100: aload_0
-    //   101: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   101: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   104: aload_1
     //   105: areturn
     //   106: astore_0
     //   107: aload_3
-    //   108: invokestatic 176	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   108: invokestatic 182	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
     //   111: aload_0
     //   112: athrow
     //   113: astore_1
@@ -1029,42 +1047,42 @@ public class PluginUtils
     //   3: astore_3
     //   4: aload_3
     //   5: monitorenter
-    //   6: getstatic 361	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
+    //   6: getstatic 367	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
     //   9: ifnonnull +107 -> 116
     //   12: new 42	java/util/concurrent/ConcurrentHashMap
     //   15: dup
     //   16: invokespecial 43	java/util/concurrent/ConcurrentHashMap:<init>	()V
-    //   19: putstatic 361	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
+    //   19: putstatic 367	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
     //   22: aconst_null
     //   23: astore_1
     //   24: aconst_null
     //   25: astore_2
-    //   26: new 401	java/io/BufferedReader
+    //   26: new 407	java/io/BufferedReader
     //   29: dup
-    //   30: new 403	java/io/InputStreamReader
+    //   30: new 409	java/io/InputStreamReader
     //   33: dup
     //   34: aload_0
-    //   35: invokevirtual 220	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   38: ldc_w 405
-    //   41: invokevirtual 228	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   44: invokespecial 408	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   47: invokespecial 411	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   35: invokevirtual 226	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   38: ldc_w 411
+    //   41: invokevirtual 234	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   44: invokespecial 414	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   47: invokespecial 417	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   50: astore_0
     //   51: aload_0
-    //   52: invokevirtual 414	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   52: invokevirtual 420	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   55: astore_1
     //   56: aload_1
     //   57: ifnull +62 -> 119
     //   60: aload_1
-    //   61: invokevirtual 417	java/lang/String:trim	()Ljava/lang/String;
-    //   64: ldc_w 419
-    //   67: invokevirtual 423	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   61: invokevirtual 423	java/lang/String:trim	()Ljava/lang/String;
+    //   64: ldc_w 425
+    //   67: invokevirtual 429	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   70: astore 4
     //   72: aload 4
     //   74: iconst_0
     //   75: aaload
     //   76: astore_2
-    //   77: ldc_w 357
+    //   77: ldc_w 363
     //   80: astore_1
     //   81: aload 4
     //   83: arraylength
@@ -1074,24 +1092,24 @@ public class PluginUtils
     //   90: iconst_1
     //   91: aaload
     //   92: astore_1
-    //   93: getstatic 361	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
+    //   93: getstatic 367	com/tencent/mobileqq/pluginsdk/PluginUtils:sManifest	Ljava/util/Map;
     //   96: aload_2
     //   97: aload_1
-    //   98: invokeinterface 301 3 0
+    //   98: invokeinterface 307 3 0
     //   103: pop
     //   104: goto -53 -> 51
     //   107: astore_1
     //   108: aload_0
     //   109: ifnull +7 -> 116
     //   112: aload_0
-    //   113: invokevirtual 426	java/io/BufferedReader:close	()V
+    //   113: invokevirtual 432	java/io/BufferedReader:close	()V
     //   116: aload_3
     //   117: monitorexit
     //   118: return
     //   119: aload_0
     //   120: ifnull -4 -> 116
     //   123: aload_0
-    //   124: invokevirtual 426	java/io/BufferedReader:close	()V
+    //   124: invokevirtual 432	java/io/BufferedReader:close	()V
     //   127: goto -11 -> 116
     //   130: astore_0
     //   131: goto -15 -> 116
@@ -1099,7 +1117,7 @@ public class PluginUtils
     //   135: aload_1
     //   136: ifnull +7 -> 143
     //   139: aload_1
-    //   140: invokevirtual 426	java/io/BufferedReader:close	()V
+    //   140: invokevirtual 432	java/io/BufferedReader:close	()V
     //   143: aload_0
     //   144: athrow
     //   145: astore_0

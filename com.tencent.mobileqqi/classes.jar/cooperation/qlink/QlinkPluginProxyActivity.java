@@ -39,7 +39,7 @@ public class QlinkPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    boolean bool = PluginUtils.isPluginInstalled(paramActivity, "qlink_plugin.apk", "24935");
+    boolean bool = PluginUtils.isPluginInstalled(paramActivity, "qlink_plugin.apk", "25030");
     if (QLog.isColorLevel()) {
       QLog.d("QlinkLog", 2, "launchPluingActivityForResult.isPluginInstalled end: " + bool);
     }

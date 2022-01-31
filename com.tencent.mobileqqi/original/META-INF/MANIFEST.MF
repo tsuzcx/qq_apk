@@ -143,7 +143,7 @@ Name: R/c/bhe.xml
 SHA1-Digest: 7Oay2tDSdjoQEJZf1/DykQ6W+dY=
 
 Name: classes3.dex
-SHA1-Digest: KmG5txlmAB7PhEBcbW3Trbgh8qs=
+SHA1-Digest: ib9gBtu3rSwnu8rUeSQmyC5yNYI=
 
 Name: R/c/bm.xml
 SHA1-Digest: V93TYCwbDfxOf+gSZtk/9FWWwFE=
@@ -764,7 +764,7 @@ Name: R/f/eai.png
 SHA1-Digest: M7A0QossrBI2nIHwZAmx1nWIQ6I=
 
 Name: assets/lib/mips/libcodecwrapperV2.so
-SHA1-Digest: 35M2Sk5cf1miizMa4IoWc4er0X0=
+SHA1-Digest: NfhyjMDclfxsgxPtMiha5Obj6lk=
 
 Name: R/g/dda.png
 SHA1-Digest: Axv7IbBgWp9wjCxxzcOu2JC6HCk=
@@ -1397,7 +1397,7 @@ Name: R/k/goe.png
 SHA1-Digest: vLm0XzuS5Lj782sWt2s886E6RlQ=
 
 Name: assets/plugins/qqfav.jpg
-SHA1-Digest: K95TD+L3z2HBjwTb1u210z9Slks=
+SHA1-Digest: ni2HYvDMlKWLeDurPaO01A/mnKg=
 
 Name: R/k/ezn.png
 SHA1-Digest: S2W869/C/gDCh8A8qH/6u3wJm5g=
@@ -2231,7 +2231,7 @@ Name: R/f/dmr.png
 SHA1-Digest: 2EulEmBh75awkt4fUSh826yOB5E=
 
 Name: assets/lib/x86/libcodecwrapperV2.so
-SHA1-Digest: 4BBHkQVE1R7Is1Hrg6a3le+/lFE=
+SHA1-Digest: JqfKSWgIKrF1uplWAFpUcp1YHaY=
 
 Name: R/c/bny.xml
 SHA1-Digest: vXL7VQgpFzY2bOpPJ0w7aUzY4A4=
@@ -3299,7 +3299,7 @@ Name: R/k/ike.png
 SHA1-Digest: aycHtJ2uGGzue42PZ0ZBhQea3Cg=
 
 Name: assets/jni.ini
-SHA1-Digest: 4XGPvEt1hwQkLBs3ozKztrrmYls=
+SHA1-Digest: yLrGI7YUH0Utfj4yEmuEMo+g6Sg=
 
 Name: R/k/select_member_circle_icon.png
 SHA1-Digest: 8ORmbuis8EhJJCJem4gwIU+zaQs=
@@ -3698,7 +3698,7 @@ Name: R/c/bq.xml
 SHA1-Digest: cDCag72eFXKlekbTYwoc7XzPidM=
 
 Name: assets/plugins/qzone_plugin.jpg
-SHA1-Digest: z39FpnOkawFeSzh7tiFyGWjI3co=
+SHA1-Digest: lpWaQeBl9uDfMrWmTfq0p/sX/00=
 
 Name: R/k/ihy.png
 SHA1-Digest: nU66i5kbGAPc4Me8xGu5YdCaewc=
@@ -3902,7 +3902,7 @@ Name: R/k/gfd.png
 SHA1-Digest: 0Mr/TWDcFtQj2gXh1bIfZO0gKtI=
 
 Name: assets/plugins/qlink_plugin.jpg
-SHA1-Digest: 8IPj2WlxQT9l2lEbBtWE6PIlZq8=
+SHA1-Digest: SY2IAHwLam1VC23qYU+P5PNb2G0=
 
 Name: R/o/sk.xml
 SHA1-Digest: Mt7g4FNgWlo3pGp8r2Wz69LMJBc=
@@ -4229,7 +4229,7 @@ Name: R/c/brq.png
 SHA1-Digest: WozRAR42QXzSlc2YsBOKZ8BVTcE=
 
 Name: assets/lib/armeabi/libcodecwrapperV2.so
-SHA1-Digest: F1GEFI8OjJ2Q04jVUqer+ZUXbHw=
+SHA1-Digest: uEjv44vOLz76rNfxWSlyOWFqE1s=
 
 Name: R/p/eea.xml
 SHA1-Digest: 8fV6ZmN8EZdwurcO/kmF2kdIoI8=
@@ -5525,7 +5525,7 @@ Name: R/k/fuq.9.png
 SHA1-Digest: tbaT2EcplgRLJ+PPqk4dhBzooFk=
 
 Name: classes.dex
-SHA1-Digest: m5KI7i98NfyFbhwNCuTiv37WfdA=
+SHA1-Digest: TARpbEM1C3l0bp9z2rPl+/RKEKU=
 
 Name: R/f/eog.png
 SHA1-Digest: z7TMpxG5jbM0TmjpcokM1DZobdo=
@@ -5939,7 +5939,7 @@ Name: R/o/bvf.xml
 SHA1-Digest: PriQNZKmJHktQMkIcvv9EHSmBmk=
 
 Name: assets/classes3.dex.MD5
-SHA1-Digest: HCv3Gh2+gLxw88F2z62QOYpaVWs=
+SHA1-Digest: WjpKE/ter/roEsZvS3ba9ToUfSE=
 
 Name: R/k/gpv.png
 SHA1-Digest: AUp7R+2GR9JaV1GntoEX1qWyXLg=
@@ -7103,7 +7103,7 @@ Name: R/c/cry.xml
 SHA1-Digest: 1PeXmji85d3edwOAhhJYfxJdtpw=
 
 Name: assets/plugins/PluginManifest
-SHA1-Digest: drwXPcAincL31eA7dtFaZ6OOZb4=
+SHA1-Digest: 4+a4P6mQsOj0sVdDgAq0+3O6kPw=
 
 Name: R/f/dgl.png
 SHA1-Digest: tMhDnvcF478m9YgDyC4nEi2xnU8=
@@ -8384,7 +8384,7 @@ Name: R/b/iep.xml
 SHA1-Digest: iC+4VuBw/J8bCd0uF7q1jwLkqMQ=
 
 Name: assets/plugins/WeiyunPlugin.jpg
-SHA1-Digest: ezb0Dz3I30nnNUHebsoAMqQO3Og=
+SHA1-Digest: OjBHx3pMI3kvF9GkaHlElwD+Y7o=
 
 Name: R/f/dxu.png
 SHA1-Digest: JmXOP9qiU04mOykkBNWyPnFgiiQ=
@@ -8960,7 +8960,7 @@ Name: R/k/ie_arrow1_press.png
 SHA1-Digest: +finrSMbEWSAkCAHlsU5StXEtIY=
 
 Name: AndroidManifest.xml
-SHA1-Digest: 7zjS/FMTS683B+dUgxhv423SWko=
+SHA1-Digest: AqARGAw21cr/z4s2ct48wpFfaQw=
 
 Name: R/c/hth.xml
 SHA1-Digest: wALyZqp3d+YC+9+UCtDDqOl0Yrs=
@@ -9773,7 +9773,7 @@ Name: R/f/dku.png
 SHA1-Digest: TxJA4HfCaXLZzp02V9yx9/U4R5g=
 
 Name: assets/classes2.dex.MD5
-SHA1-Digest: VtBUlYIKgcKmAATfNgODCepP2Q4=
+SHA1-Digest: 06II5TLeXj4iTFOt04yckz0sFnY=
 
 Name: R/k/qq_profilecard_icon_video_press.png
 SHA1-Digest: Yfn5ukFE625slkKcs8TYh/n7kzE=
@@ -10346,7 +10346,7 @@ Name: R/c/blu.png
 SHA1-Digest: tdMywx7wU3GFDAiMrcQDIl2GjmQ=
 
 Name: classes2.dex
-SHA1-Digest: yFERv0E6JM6l3ZHD97tD9MtjAQQ=
+SHA1-Digest: 3Lz0mMluC5rVpIw+rw95Qc8BYk4=
 
 Name: R/o/cny.xml
 SHA1-Digest: SirhLUFcadWg9kVGRFoLZVkib24=
@@ -12020,7 +12020,7 @@ Name: R/f/enn.png
 SHA1-Digest: x5U3cGqXz7GkenDODAPuiTS1Wyk=
 
 Name: assets/plugins/troop_plugin.jpg
-SHA1-Digest: pQ9BInfWsWKcdfC5RosUo+9YJQI=
+SHA1-Digest: mW/j+aq5+NCGIYx/79bM4Uz5x+k=
 
 Name: R/o/bpb.xml
 SHA1-Digest: 8T7242AU7IpU/QH8IdquNKOHPOk=
@@ -13358,7 +13358,7 @@ Name: R/f/dpx.png
 SHA1-Digest: ijYgrIxqQ9oNd3ySZsU+EFGjKsg=
 
 Name: assets/revision.txt
-SHA1-Digest: ohL3Bg5zwdaoi40FIzqARpui9nM=
+SHA1-Digest: dO+rriMAn814b/r4liOpQv9Rua4=
 
 Name: R/f/ebb.9.png
 SHA1-Digest: hxaD5mIfyeGiVY2TtkOFgx/nQao=

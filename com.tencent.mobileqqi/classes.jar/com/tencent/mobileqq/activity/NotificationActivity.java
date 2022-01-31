@@ -94,7 +94,7 @@ public class NotificationActivity
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131562388) + "6.0.0" + getString(2131562560));
+    ((TextView)localObject).setText(getString(2131562388) + "6.0.1" + getString(2131562560));
     localButton1.setOnClickListener(new ddl(this));
     localButton2.setOnClickListener(new ddn(this));
     return localAlertDialog;

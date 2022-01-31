@@ -53,7 +53,7 @@ public class goj
       }
       paramVarArgs = new ObjectOutputStream(new FileOutputStream(paramVarArgs));
       paramVarArgs.writeInt(AppSetting.a);
-      paramVarArgs.writeUTF("24935");
+      paramVarArgs.writeUTF("25030");
       paramVarArgs.close();
     }
     catch (IOException paramVarArgs)

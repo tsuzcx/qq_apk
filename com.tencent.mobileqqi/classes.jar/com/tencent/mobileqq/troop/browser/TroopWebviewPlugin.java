@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class TroopWebviewPlugin
   extends WebViewPlugin
 {
-  public static final String a = "6.0.0.6500";
+  public static final String a = "6.0.1.6600";
   public static final String b = "Troop";
   public static final String c = "searchTroop";
   public static final String d = "showTroopProfile";
@@ -188,7 +188,7 @@ public class TroopWebviewPlugin
       }
       else if (paramString3.equals("getVersion"))
       {
-        paramJsBridgeListener.a("6.0.0.6500");
+        paramJsBridgeListener.a("6.0.1.6600");
       }
       else if (paramString3.equals("isNetworkConnected"))
       {

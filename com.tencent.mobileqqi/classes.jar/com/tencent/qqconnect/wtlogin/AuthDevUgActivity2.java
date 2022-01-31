@@ -94,7 +94,7 @@ public class AuthDevUgActivity2
       ((StringBuilder)localObject1).append("?");
       ((StringBuilder)localObject1).append("plat=1");
       ((StringBuilder)localObject1).append("&app=1");
-      ((StringBuilder)localObject1).append("&version=6.0.0.6500");
+      ((StringBuilder)localObject1).append("&version=6.0.1.6600");
       ((StringBuilder)localObject1).append("&device=" + URLEncoder.encode(Build.DEVICE));
       ((StringBuilder)localObject1).append("&system=" + Build.VERSION.RELEASE);
       ((StringBuilder)localObject1).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

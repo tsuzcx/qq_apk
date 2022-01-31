@@ -83,7 +83,7 @@ public class giv
       if (i != 0)
       {
         this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(((Pair)this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).first), String.valueOf(((Pair)this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).second));
-        localObject1 = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.jdField_a_of_type_Long, "6.0.0", 109L);
+        localObject1 = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.jdField_a_of_type_Long, "6.0.1", 109L);
         localObject2 = new UniPacket(true);
         ((UniPacket)localObject2).setEncodeName("utf-8");
         ((UniPacket)localObject2).setFuncName("set");

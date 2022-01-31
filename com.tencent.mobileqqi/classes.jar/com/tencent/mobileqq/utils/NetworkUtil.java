@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
+import android.os.Build.VERSION;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -60,11 +61,15 @@ public class NetworkUtil
   
   public static boolean a(Context paramContext)
   {
-    boolean bool = false;
-    if (Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on", 0) != 0) {
-      bool = true;
+    if (Build.VERSION.SDK_INT >= 17) {
+      if (Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on", 0) == 0) {}
     }
-    return bool;
+    while (Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on", 0) != 0)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
   
   public static boolean a(NetworkInfo paramNetworkInfo)

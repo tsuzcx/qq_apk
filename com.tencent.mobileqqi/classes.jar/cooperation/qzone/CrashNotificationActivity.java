@@ -28,7 +28,7 @@ public class CrashNotificationActivity
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131562388) + "6.0.0" + getString(2131562560));
+    ((TextView)localObject).setText(getString(2131562388) + "6.0.1" + getString(2131562560));
     localObject = new igl(this);
     localButton1.setOnClickListener((View.OnClickListener)localObject);
     localButton2.setOnClickListener((View.OnClickListener)localObject);

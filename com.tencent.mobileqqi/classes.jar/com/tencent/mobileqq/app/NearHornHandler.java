@@ -115,7 +115,7 @@ public class NearHornHandler
     NearHornPb.HornReqHead localHornReqHead = new NearHornPb.HornReqHead();
     localHornReqHead.protocol_ver.set(1);
     localHornReqHead.client_plat_id.set(109);
-    localHornReqHead.client_ver.set("6.0.0.6500");
+    localHornReqHead.client_ver.set("6.0.1.6600");
     localHornReqHead.os_ver.set(Build.VERSION.SDK);
     localHornReqHead.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
     if (paramBoolean.booleanValue() == true)

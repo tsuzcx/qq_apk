@@ -409,7 +409,7 @@ public class SVIPHandler
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "AvatarUpdate.checkUpdate");
     localReqUpdate.uint32_plat_id.set(2);
     localReqUpdate.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-    localReqUpdate.str_version.set("6.0.0.6500");
+    localReqUpdate.str_version.set("6.0.1.6600");
     localReqUpdate.int32_cmd.set(1);
     localReqUpdate.msg_req_data.set(localReqUpdateData);
     localReqUpdate.setHasFlag(true);
@@ -464,7 +464,7 @@ public class SVIPHandler
         }
         localReqUpdate.uint32_plat_id.set(2);
         localReqUpdate.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-        localReqUpdate.str_version.set("6.0.0.6500");
+        localReqUpdate.str_version.set("6.0.1.6600");
         localReqUpdate.int32_cmd.set(1);
         localReqUpdate.msg_req_data.set(localReqUpdateData);
         localReqUpdate.setHasFlag(true);

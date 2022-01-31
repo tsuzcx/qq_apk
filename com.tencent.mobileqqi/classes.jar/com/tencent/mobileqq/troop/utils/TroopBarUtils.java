@@ -66,7 +66,7 @@ public class TroopBarUtils
   protected static final String J = "前天";
   protected static final String K = "全部";
   protected static final String L = "精华";
-  private static final String M = "&_wv=1031&_bid=128&platform=android&from=native&version=6.0.0";
+  private static final String M = "&_wv=1031&_bid=128&platform=android&from=native&version=6.0.1";
   public static final int a = 20;
   public static final TroopBarPageEntity.TypeListEntity a;
   public static final String a = "TroopBar";
@@ -413,7 +413,7 @@ public class TroopBarUtils
     if ((paramBundle1 == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    paramBundle1.putString("version", "6.0.0");
+    paramBundle1.putString("version", "6.0.1");
     paramBundle1.putString("platform", "android");
     paramBundle1.putString("Cookie", "uin=" + paramString2 + ";skey=" + paramString3);
     paramBundle1.putString("Referer", "http://xiaoqu.qq.com");
@@ -429,7 +429,7 @@ public class TroopBarUtils
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("http://xiaoqu.qq.com/cgi-bin/bar/jump?").append("action=").append(paramString).append("&_wv=1031&_bid=128&platform=android&from=native&version=6.0.0");
+    localStringBuilder.append("http://xiaoqu.qq.com/cgi-bin/bar/jump?").append("action=").append(paramString).append("&_wv=1031&_bid=128&platform=android&from=native&version=6.0.1");
     if (paramVarArgs != null)
     {
       int i2 = paramVarArgs.length;

@@ -37,6 +37,7 @@ public class emb
     int j;
     switch (paramInt)
     {
+    case 1: 
     default: 
       i = 2131561882;
       j = 2130837749;
@@ -53,10 +54,6 @@ public class emb
       i = 2131562390;
       j = 2130837750;
       paramInt = 2131562913;
-      continue;
-      i = 2131562715;
-      j = 2130837751;
-      paramInt = 2131562915;
       continue;
       i = 2131561882;
       j = 2130837749;

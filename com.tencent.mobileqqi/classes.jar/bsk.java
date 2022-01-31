@@ -27,8 +27,6 @@ public class bsk
       }
       DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a, 2, this.a.jdField_j_of_type_JavaLangString, this.a.h, this.a.f, this.a.jdField_j_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
       continue;
-      DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a, this.a.i, this.a.h, this.a.f);
-      continue;
       DiscussionInfoCardActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_b_of_type_Long, this.a.i, this.a.f);
     }
   }
